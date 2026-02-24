@@ -1,0 +1,1666 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Takumi Sports Australia — Osaka Pickleball Paddles</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
+  <style>
+    /* ─── TOKENS ─────────────────────────────────────────────── */
+    :root {
+      --forest:  #1a2e1f;
+      --pine:    #243328;
+      --moss:    #3a5240;
+      --cream:   #f5f0e8;
+      --parchment: #ede7d9;
+      --gold:    #c8a96e;
+      --gold-lt: #e2c896;
+      --text:    #1a2e1f;
+      --muted:   #6b7c6e;
+      --white:   #ffffff;
+      --radius:  4px;
+      --ff-display: 'Cormorant Garamond', Georgia, serif;
+      --ff-body:    'DM Sans', sans-serif;
+      --nav-h: 70px;
+    }
+
+    /* ─── RESET ──────────────────────────────────────────────── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: var(--ff-body);
+      background: var(--cream);
+      color: var(--text);
+      overflow-x: hidden;
+      font-size: 15px;
+      line-height: 1.7;
+    }
+    img { display: block; max-width: 100%; }
+    a { text-decoration: none; color: inherit; }
+    ul { list-style: none; }
+
+    /* ─── UTILITY ────────────────────────────────────────────── */
+    .container { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
+    .section-label {
+      font-family: var(--ff-body);
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--gold);
+    }
+    .fade-up {
+      opacity: 0;
+      transform: translateY(28px);
+      transition: opacity 0.7s ease, transform 0.7s ease;
+    }
+    .fade-up.visible { opacity: 1; transform: none; }
+
+    /* ─── NAV ────────────────────────────────────────────────── */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      height: var(--nav-h);
+      display: flex;
+      align-items: center;
+      transition: background 0.4s, box-shadow 0.4s;
+    }
+    nav.scrolled {
+      background: rgba(26,46,31,0.97);
+      backdrop-filter: blur(10px);
+      box-shadow: 0 2px 20px rgba(0,0,0,0.25);
+    }
+    .nav-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      width: 100%;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+    .nav-logo {
+      font-family: var(--ff-display);
+      font-size: 22px;
+      font-weight: 600;
+      color: var(--cream);
+      letter-spacing: 0.04em;
+    }
+    .nav-logo span { color: var(--gold); }
+    .nav-links {
+      display: flex;
+      gap: 36px;
+      align-items: center;
+    }
+    .nav-links a {
+      color: rgba(245,240,232,0.75);
+      font-size: 13px;
+      font-weight: 400;
+      letter-spacing: 0.06em;
+      transition: color 0.2s;
+    }
+    .nav-links a:hover { color: var(--gold); }
+    .nav-cta {
+      background: var(--gold);
+      color: var(--forest) !important;
+      padding: 9px 22px;
+      border-radius: var(--radius);
+      font-weight: 500 !important;
+      letter-spacing: 0.04em !important;
+      transition: background 0.2s, transform 0.2s !important;
+    }
+    .nav-cta:hover { background: var(--gold-lt) !important; transform: translateY(-1px); }
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      cursor: pointer;
+      padding: 4px;
+    }
+    .hamburger span {
+      display: block;
+      width: 24px;
+      height: 2px;
+      background: var(--cream);
+      border-radius: 2px;
+      transition: transform 0.3s, opacity 0.3s;
+    }
+    .hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+    .hamburger.open span:nth-child(2) { opacity: 0; }
+    .hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+    .mobile-menu {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: var(--forest);
+      z-index: 99;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 36px;
+    }
+    .mobile-menu.open { display: flex; }
+    .mobile-menu a {
+      font-family: var(--ff-display);
+      font-size: 32px;
+      color: var(--cream);
+      letter-spacing: 0.02em;
+      transition: color 0.2s;
+    }
+    .mobile-menu a:hover { color: var(--gold); }
+
+    /* ─── HERO ───────────────────────────────────────────────── */
+    #home {
+      min-height: 100vh;
+      background: var(--forest);
+      display: flex;
+      align-items: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .hero-bg-lines {
+      position: absolute;
+      inset: 0;
+      background-image:
+        repeating-linear-gradient(
+          0deg,
+          transparent,
+          transparent 79px,
+          rgba(200,169,110,0.06) 79px,
+          rgba(200,169,110,0.06) 80px
+        ),
+        repeating-linear-gradient(
+          90deg,
+          transparent,
+          transparent 79px,
+          rgba(200,169,110,0.06) 79px,
+          rgba(200,169,110,0.06) 80px
+        );
+    }
+    .hero-glow {
+      position: absolute;
+      width: 600px; height: 600px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(200,169,110,0.12) 0%, transparent 70%);
+      top: 50%; left: 55%;
+      transform: translate(-50%,-50%);
+      pointer-events: none;
+    }
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      max-width: 700px;
+    }
+    .hero-eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 28px;
+    }
+    .hero-eyebrow-line {
+      width: 40px;
+      height: 1px;
+      background: var(--gold);
+    }
+    .hero-eyebrow span {
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--gold);
+    }
+    .hero-title {
+      font-family: var(--ff-display);
+      font-size: clamp(48px, 7vw, 88px);
+      font-weight: 300;
+      line-height: 1.05;
+      color: var(--cream);
+      margin-bottom: 24px;
+    }
+    .hero-title em {
+      font-style: italic;
+      color: var(--gold);
+    }
+    .hero-desc {
+      font-size: 16px;
+      color: rgba(245,240,232,0.65);
+      max-width: 460px;
+      margin-bottom: 40px;
+      line-height: 1.8;
+    }
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 16px;
+      align-items: center;
+    }
+    .btn-primary {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background: var(--gold);
+      color: var(--forest);
+      font-family: var(--ff-body);
+      font-size: 13px;
+      font-weight: 500;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      padding: 15px 32px;
+      border-radius: var(--radius);
+      border: none;
+      cursor: pointer;
+      transition: background 0.25s, transform 0.25s;
+    }
+    .btn-primary:hover { background: var(--gold-lt); transform: translateY(-2px); }
+    .btn-outline {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      color: var(--cream);
+      font-size: 13px;
+      letter-spacing: 0.06em;
+      padding: 15px 0;
+      border-bottom: 1px solid rgba(245,240,232,0.3);
+      transition: color 0.2s, border-color 0.2s;
+    }
+    .btn-outline:hover { color: var(--gold); border-color: var(--gold); }
+    .hero-badge {
+      position: absolute;
+      right: 80px;
+      bottom: 80px;
+      width: 140px;
+      height: 140px;
+      border-radius: 50%;
+      border: 1px solid rgba(200,169,110,0.3);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      text-align: center;
+      animation: spin-slow 18s linear infinite;
+    }
+    .hero-badge-text {
+      font-family: var(--ff-display);
+      font-size: 13px;
+      color: var(--gold);
+      font-style: italic;
+      line-height: 1.4;
+    }
+    @keyframes spin-slow {
+      from { transform: rotate(0deg); }
+      to   { transform: rotate(360deg); }
+    }
+    .hero-scroll {
+      position: absolute;
+      bottom: 32px;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 8px;
+      color: rgba(245,240,232,0.4);
+      font-size: 11px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+    .scroll-line {
+      width: 1px;
+      height: 48px;
+      background: linear-gradient(to bottom, var(--gold), transparent);
+      animation: scroll-pulse 2s ease-in-out infinite;
+    }
+    @keyframes scroll-pulse {
+      0%,100% { opacity: 0.4; transform: scaleY(1); }
+      50%      { opacity: 1;   transform: scaleY(1.1); }
+    }
+
+    /* ─── TRUST BAR ──────────────────────────────────────────── */
+    .trust-bar {
+      background: var(--pine);
+      padding: 18px 0;
+      border-top: 1px solid rgba(200,169,110,0.15);
+      border-bottom: 1px solid rgba(200,169,110,0.15);
+    }
+    .trust-bar-inner {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 40px;
+    }
+    .trust-item {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      color: rgba(245,240,232,0.7);
+      font-size: 13px;
+    }
+    .trust-icon {
+      width: 20px;
+      height: 20px;
+      color: var(--gold);
+      flex-shrink: 0;
+    }
+
+    /* ─── SECTION COMMON ─────────────────────────────────────── */
+    section { padding: 100px 0; }
+    .section-head {
+      margin-bottom: 64px;
+    }
+    .section-head h2 {
+      font-family: var(--ff-display);
+      font-size: clamp(36px, 5vw, 56px);
+      font-weight: 300;
+      line-height: 1.1;
+      margin-top: 12px;
+    }
+    .gold-line {
+      width: 48px;
+      height: 2px;
+      background: var(--gold);
+      margin-top: 20px;
+    }
+
+    /* ─── PRODUCTS ───────────────────────────────────────────── */
+    #products { background: var(--cream); }
+    .products-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 28px;
+    }
+    .product-card {
+      background: var(--white);
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow: 0 2px 16px rgba(26,46,31,0.07);
+      transition: transform 0.3s, box-shadow 0.3s;
+      cursor: pointer;
+    }
+    .product-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 12px 40px rgba(26,46,31,0.14);
+    }
+    .product-img-wrap {
+      aspect-ratio: 4/3;
+      background: var(--parchment);
+      overflow: hidden;
+      position: relative;
+    }
+    .product-img-wrap img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.5s ease;
+    }
+    .product-card:hover .product-img-wrap img { transform: scale(1.05); }
+    .product-badge {
+      position: absolute;
+      top: 14px;
+      left: 14px;
+      background: var(--gold);
+      color: var(--forest);
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      padding: 4px 10px;
+      border-radius: 2px;
+    }
+    .product-body { padding: 22px; }
+    .product-series {
+      font-size: 10px;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 6px;
+    }
+    .product-name {
+      font-family: var(--ff-display);
+      font-size: 20px;
+      font-weight: 600;
+      line-height: 1.25;
+      margin-bottom: 8px;
+      color: var(--forest);
+    }
+    .product-desc {
+      font-size: 13px;
+      color: var(--muted);
+      line-height: 1.6;
+      margin-bottom: 18px;
+    }
+    .product-footer {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .product-price {
+      font-family: var(--ff-display);
+      font-size: 22px;
+      font-weight: 600;
+      color: var(--forest);
+    }
+    .product-price .was {
+      font-size: 14px;
+      font-weight: 300;
+      color: var(--muted);
+      text-decoration: line-through;
+      margin-right: 6px;
+    }
+    .add-btn {
+      background: var(--forest);
+      color: var(--cream);
+      border: none;
+      padding: 10px 18px;
+      border-radius: var(--radius);
+      font-family: var(--ff-body);
+      font-size: 12px;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      cursor: pointer;
+      transition: background 0.2s, transform 0.2s;
+    }
+    .add-btn:hover { background: var(--moss); transform: translateY(-1px); }
+
+    /* ─── PROMO BAND ─────────────────────────────────────────── */
+    .promo-band {
+      background: var(--gold);
+      padding: 80px 0;
+    }
+    .promo-inner {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 60px;
+      align-items: center;
+    }
+    .promo-text h2 {
+      font-family: var(--ff-display);
+      font-size: clamp(32px, 4vw, 50px);
+      font-weight: 300;
+      color: var(--forest);
+      line-height: 1.1;
+      margin-bottom: 16px;
+    }
+    .promo-text p {
+      color: rgba(26,46,31,0.75);
+      font-size: 15px;
+      margin-bottom: 28px;
+    }
+    .promo-text .btn-primary {
+      background: var(--forest);
+      color: var(--cream);
+    }
+    .promo-text .btn-primary:hover { background: var(--pine); }
+    .promo-stats {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+    }
+    .stat-box {
+      background: rgba(26,46,31,0.08);
+      border-radius: 8px;
+      padding: 24px;
+      text-align: center;
+    }
+    .stat-num {
+      font-family: var(--ff-display);
+      font-size: 40px;
+      font-weight: 300;
+      color: var(--forest);
+      line-height: 1;
+    }
+    .stat-label {
+      font-size: 12px;
+      color: rgba(26,46,31,0.65);
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      margin-top: 6px;
+    }
+
+    /* ─── ABOUT ──────────────────────────────────────────────── */
+    #about { background: var(--forest); }
+    #about .section-label { color: var(--gold); }
+    #about h2 { color: var(--cream); }
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: center;
+    }
+    .about-text p {
+      color: rgba(245,240,232,0.7);
+      font-size: 15px;
+      margin-bottom: 20px;
+    }
+    .about-text .gold-line { margin-bottom: 32px; }
+    .about-features {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+      margin-top: 40px;
+    }
+    .feature-item {
+      padding: 24px;
+      border: 1px solid rgba(200,169,110,0.2);
+      border-radius: 8px;
+      transition: border-color 0.3s, background 0.3s;
+    }
+    .feature-item:hover {
+      border-color: rgba(200,169,110,0.5);
+      background: rgba(200,169,110,0.05);
+    }
+    .feature-icon {
+      font-size: 24px;
+      margin-bottom: 10px;
+    }
+    .feature-title {
+      font-family: var(--ff-display);
+      font-size: 17px;
+      font-weight: 600;
+      color: var(--cream);
+      margin-bottom: 6px;
+    }
+    .feature-desc {
+      font-size: 13px;
+      color: rgba(245,240,232,0.5);
+      line-height: 1.6;
+    }
+    .about-visual {
+      position: relative;
+    }
+    .about-card {
+      background: var(--pine);
+      border: 1px solid rgba(200,169,110,0.15);
+      border-radius: 12px;
+      padding: 48px 40px;
+      text-align: center;
+    }
+    .about-card-icon {
+      font-size: 56px;
+      margin-bottom: 24px;
+    }
+    .about-card h3 {
+      font-family: var(--ff-display);
+      font-size: 28px;
+      font-weight: 300;
+      color: var(--cream);
+      margin-bottom: 12px;
+    }
+    .about-card p {
+      color: rgba(245,240,232,0.6);
+      font-size: 14px;
+      line-height: 1.8;
+    }
+    .about-card-badge {
+      display: inline-block;
+      margin-top: 24px;
+      border: 1px solid rgba(200,169,110,0.4);
+      color: var(--gold);
+      font-size: 11px;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      padding: 8px 20px;
+      border-radius: 30px;
+    }
+
+    /* ─── TESTIMONIALS ───────────────────────────────────────── */
+    #testimonials { background: var(--parchment); }
+    .testimonials-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 24px;
+    }
+    .testimonial-card {
+      background: var(--white);
+      border-radius: 8px;
+      padding: 32px;
+      box-shadow: 0 2px 14px rgba(26,46,31,0.06);
+    }
+    .stars {
+      color: var(--gold);
+      font-size: 16px;
+      letter-spacing: 2px;
+      margin-bottom: 16px;
+    }
+    .testimonial-text {
+      font-family: var(--ff-display);
+      font-size: 17px;
+      font-style: italic;
+      font-weight: 300;
+      color: var(--forest);
+      line-height: 1.6;
+      margin-bottom: 20px;
+    }
+    .testimonial-author {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .author-avatar {
+      width: 40px; height: 40px;
+      border-radius: 50%;
+      background: var(--moss);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--cream);
+      font-family: var(--ff-display);
+      font-size: 16px;
+      font-weight: 600;
+      flex-shrink: 0;
+    }
+    .author-name {
+      font-weight: 500;
+      font-size: 14px;
+      color: var(--forest);
+    }
+    .author-loc {
+      font-size: 12px;
+      color: var(--muted);
+    }
+
+    /* ─── BLOG ───────────────────────────────────────────────── */
+    #blog { background: var(--cream); }
+    .blog-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 28px;
+    }
+    .blog-card {
+      background: var(--white);
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow: 0 2px 16px rgba(26,46,31,0.06);
+      transition: transform 0.3s, box-shadow 0.3s;
+      cursor: pointer;
+    }
+    .blog-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 10px 30px rgba(26,46,31,0.12);
+    }
+    .blog-img {
+      aspect-ratio: 16/9;
+      background: var(--pine);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 48px;
+      color: var(--gold);
+      position: relative;
+      overflow: hidden;
+    }
+    .blog-img::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to bottom, transparent 50%, rgba(26,46,31,0.3));
+    }
+    .blog-cat {
+      position: absolute;
+      bottom: 12px;
+      left: 14px;
+      z-index: 1;
+      background: var(--gold);
+      color: var(--forest);
+      font-size: 9px;
+      font-weight: 600;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      padding: 4px 10px;
+      border-radius: 2px;
+    }
+    .blog-body { padding: 24px; }
+    .blog-date {
+      font-size: 11px;
+      color: var(--muted);
+      letter-spacing: 0.08em;
+      margin-bottom: 8px;
+    }
+    .blog-title {
+      font-family: var(--ff-display);
+      font-size: 20px;
+      font-weight: 600;
+      color: var(--forest);
+      line-height: 1.25;
+      margin-bottom: 10px;
+    }
+    .blog-excerpt {
+      font-size: 13px;
+      color: var(--muted);
+      line-height: 1.6;
+      margin-bottom: 16px;
+    }
+    .blog-link {
+      font-size: 12px;
+      font-weight: 500;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--gold);
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      transition: gap 0.2s;
+    }
+    .blog-card:hover .blog-link { gap: 10px; }
+
+    /* ─── CONTACT ────────────────────────────────────────────── */
+    #contact { background: var(--forest); }
+    #contact .section-label { color: var(--gold); }
+    #contact h2 { color: var(--cream); }
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: start;
+    }
+    .contact-info p {
+      color: rgba(245,240,232,0.65);
+      font-size: 15px;
+      margin-bottom: 36px;
+      margin-top: 16px;
+    }
+    .contact-detail {
+      display: flex;
+      align-items: flex-start;
+      gap: 16px;
+      margin-bottom: 24px;
+    }
+    .contact-icon {
+      width: 44px; height: 44px;
+      border-radius: 8px;
+      border: 1px solid rgba(200,169,110,0.25);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 18px;
+      flex-shrink: 0;
+    }
+    .contact-detail-text strong {
+      display: block;
+      font-size: 13px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 4px;
+      font-weight: 500;
+    }
+    .contact-detail-text span {
+      color: rgba(245,240,232,0.7);
+      font-size: 14px;
+    }
+    .social-links {
+      display: flex;
+      gap: 14px;
+      margin-top: 36px;
+    }
+    .social-btn {
+      width: 42px; height: 42px;
+      border-radius: 8px;
+      border: 1px solid rgba(200,169,110,0.25);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 16px;
+      color: rgba(245,240,232,0.6);
+      transition: border-color 0.2s, color 0.2s, background 0.2s;
+      cursor: pointer;
+    }
+    .social-btn:hover {
+      border-color: var(--gold);
+      color: var(--gold);
+      background: rgba(200,169,110,0.08);
+    }
+    .contact-form {
+      background: var(--pine);
+      border: 1px solid rgba(200,169,110,0.12);
+      border-radius: 12px;
+      padding: 40px;
+    }
+    .form-group {
+      margin-bottom: 20px;
+    }
+    .form-group label {
+      display: block;
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: rgba(245,240,232,0.5);
+      margin-bottom: 8px;
+    }
+    .form-group input,
+    .form-group textarea,
+    .form-group select {
+      width: 100%;
+      background: rgba(245,240,232,0.05);
+      border: 1px solid rgba(245,240,232,0.1);
+      border-radius: var(--radius);
+      padding: 14px 16px;
+      color: var(--cream);
+      font-family: var(--ff-body);
+      font-size: 14px;
+      outline: none;
+      transition: border-color 0.2s, background 0.2s;
+      appearance: none;
+    }
+    .form-group input::placeholder,
+    .form-group textarea::placeholder { color: rgba(245,240,232,0.25); }
+    .form-group input:focus,
+    .form-group textarea:focus,
+    .form-group select:focus {
+      border-color: var(--gold);
+      background: rgba(200,169,110,0.05);
+    }
+    .form-group textarea { resize: vertical; min-height: 120px; }
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+    .form-submit {
+      width: 100%;
+      background: var(--gold);
+      color: var(--forest);
+      border: none;
+      padding: 15px;
+      border-radius: var(--radius);
+      font-family: var(--ff-body);
+      font-size: 13px;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      cursor: pointer;
+      transition: background 0.2s, transform 0.2s;
+      margin-top: 8px;
+    }
+    .form-submit:hover { background: var(--gold-lt); transform: translateY(-1px); }
+    .form-success {
+      display: none;
+      text-align: center;
+      padding: 32px;
+    }
+    .form-success.show { display: block; }
+    .form-success h3 {
+      font-family: var(--ff-display);
+      font-size: 24px;
+      color: var(--gold);
+      margin-bottom: 10px;
+    }
+    .form-success p { color: rgba(245,240,232,0.6); font-size: 14px; }
+
+    /* ─── NEWSLETTER ─────────────────────────────────────────── */
+    .newsletter {
+      background: var(--pine);
+      padding: 80px 0;
+      border-top: 1px solid rgba(200,169,110,0.12);
+    }
+    .newsletter-inner {
+      text-align: center;
+      max-width: 520px;
+      margin: 0 auto;
+    }
+    .newsletter h2 {
+      font-family: var(--ff-display);
+      font-size: 36px;
+      font-weight: 300;
+      color: var(--cream);
+      margin-bottom: 12px;
+    }
+    .newsletter p {
+      color: rgba(245,240,232,0.55);
+      font-size: 14px;
+      margin-bottom: 8px;
+    }
+    .newsletter-incentive {
+      display: inline-block;
+      color: var(--gold);
+      font-size: 13px;
+      font-weight: 500;
+      margin-bottom: 28px;
+    }
+    .newsletter-form {
+      display: flex;
+      gap: 0;
+      border-radius: var(--radius);
+      overflow: hidden;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+    }
+    .newsletter-form input {
+      flex: 1;
+      background: rgba(245,240,232,0.08);
+      border: 1px solid rgba(245,240,232,0.12);
+      border-right: none;
+      padding: 15px 20px;
+      color: var(--cream);
+      font-family: var(--ff-body);
+      font-size: 14px;
+      outline: none;
+      border-radius: var(--radius) 0 0 var(--radius);
+    }
+    .newsletter-form input::placeholder { color: rgba(245,240,232,0.3); }
+    .newsletter-form button {
+      background: var(--gold);
+      color: var(--forest);
+      border: none;
+      padding: 15px 28px;
+      font-family: var(--ff-body);
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      cursor: pointer;
+      border-radius: 0 var(--radius) var(--radius) 0;
+      transition: background 0.2s;
+      white-space: nowrap;
+    }
+    .newsletter-form button:hover { background: var(--gold-lt); }
+
+    /* ─── FOOTER ─────────────────────────────────────────────── */
+    footer {
+      background: #111a13;
+      padding: 60px 0 30px;
+      border-top: 1px solid rgba(200,169,110,0.1);
+    }
+    .footer-top {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr 1fr;
+      gap: 48px;
+      margin-bottom: 48px;
+    }
+    .footer-brand h3 {
+      font-family: var(--ff-display);
+      font-size: 24px;
+      font-weight: 600;
+      color: var(--cream);
+      margin-bottom: 12px;
+    }
+    .footer-brand h3 span { color: var(--gold); }
+    .footer-brand p {
+      color: rgba(245,240,232,0.45);
+      font-size: 13px;
+      line-height: 1.8;
+      max-width: 260px;
+    }
+    .footer-col h4 {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 20px;
+    }
+    .footer-col li {
+      margin-bottom: 10px;
+    }
+    .footer-col a {
+      color: rgba(245,240,232,0.5);
+      font-size: 13px;
+      transition: color 0.2s;
+    }
+    .footer-col a:hover { color: var(--cream); }
+    .footer-bottom {
+      border-top: 1px solid rgba(245,240,232,0.07);
+      padding-top: 24px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 16px;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .footer-copy {
+      color: rgba(245,240,232,0.3);
+      font-size: 12px;
+    }
+    .footer-legal {
+      display: flex;
+      gap: 20px;
+    }
+    .footer-legal a {
+      color: rgba(245,240,232,0.3);
+      font-size: 12px;
+      transition: color 0.2s;
+    }
+    .footer-legal a:hover { color: rgba(245,240,232,0.6); }
+
+    /* ─── TOAST ──────────────────────────────────────────────── */
+    .toast {
+      position: fixed;
+      bottom: 28px;
+      right: 28px;
+      background: var(--forest);
+      border: 1px solid var(--gold);
+      color: var(--cream);
+      padding: 14px 22px;
+      border-radius: 8px;
+      font-size: 14px;
+      z-index: 999;
+      transform: translateY(80px);
+      opacity: 0;
+      transition: all 0.4s cubic-bezier(0.34,1.56,0.64,1);
+    }
+    .toast.show { transform: translateY(0); opacity: 1; }
+
+    /* ─── MOBILE ─────────────────────────────────────────────── */
+    @media (max-width: 768px) {
+      section { padding: 70px 0; }
+      .nav-links { display: none; }
+      .hamburger { display: flex; }
+      .hero-badge { display: none; }
+      .hero-title { font-size: 42px; }
+      .promo-inner { grid-template-columns: 1fr; gap: 40px; }
+      .about-grid { grid-template-columns: 1fr; gap: 48px; }
+      .about-features { grid-template-columns: 1fr; }
+      .contact-grid { grid-template-columns: 1fr; gap: 48px; }
+      .footer-top { grid-template-columns: 1fr 1fr; gap: 32px; }
+      .footer-brand { grid-column: 1 / -1; }
+      .newsletter-form { flex-direction: column; border-radius: var(--radius); }
+      .newsletter-form input { border-right: 1px solid rgba(245,240,232,0.12); border-radius: var(--radius) var(--radius) 0 0; }
+      .newsletter-form button { border-radius: 0 0 var(--radius) var(--radius); }
+      .form-row { grid-template-columns: 1fr; }
+      .promo-stats { grid-template-columns: 1fr 1fr; }
+      .hero-scroll { display: none; }
+    }
+    @media (max-width: 480px) {
+      .footer-top { grid-template-columns: 1fr; }
+      .trust-bar-inner { gap: 20px; }
+      .hero-actions { flex-direction: column; align-items: flex-start; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ───── NAV ───── -->
+<nav id="navbar">
+  <div class="nav-inner">
+    <a href="#home" class="nav-logo">Takumi<span>.</span></a>
+    <ul class="nav-links">
+      <li><a href="#home">Home</a></li>
+      <li><a href="#products">Products</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#blog">Journal</a></li>
+      <li><a href="#contact">Contact</a></li>
+      <li><a href="#products" class="nav-cta">Shop Now</a></li>
+    </ul>
+    <div class="hamburger" id="hamburger" onclick="toggleMenu()">
+      <span></span><span></span><span></span>
+    </div>
+  </div>
+</nav>
+
+<!-- Mobile Menu -->
+<div class="mobile-menu" id="mobileMenu">
+  <a href="#home"     onclick="closeMenu()">Home</a>
+  <a href="#products" onclick="closeMenu()">Products</a>
+  <a href="#about"    onclick="closeMenu()">About</a>
+  <a href="#blog"     onclick="closeMenu()">Journal</a>
+  <a href="#contact"  onclick="closeMenu()">Contact</a>
+</div>
+
+<!-- ───── HERO ───── -->
+<section id="home">
+  <div class="hero-bg-lines"></div>
+  <div class="hero-glow"></div>
+  <div class="container">
+    <div class="hero-content">
+      <div class="hero-eyebrow">
+        <div class="hero-eyebrow-line"></div>
+        <span>Osaka World — Official Australian Retailer</span>
+      </div>
+      <h1 class="hero-title">
+        Precision.<br><em>Power.</em><br>Performance.
+      </h1>
+      <p class="hero-desc">
+        Premium pickleball paddles crafted with advanced carbon construction and thermoformed technology — now shipped locally across Australia.
+      </p>
+      <div class="hero-actions">
+        <a href="#products" class="btn-primary">
+          Shop Paddles
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </a>
+        <a href="#about" class="btn-outline">
+          Our Story
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </a>
+      </div>
+    </div>
+  </div>
+  <div class="hero-badge">
+    <div class="hero-badge-text">USA Pickleball<br>Approved ✦<br>AU Warranty</div>
+  </div>
+  <div class="hero-scroll">
+    <div class="scroll-line"></div>
+    <span>Scroll</span>
+  </div>
+</section>
+
+<!-- ───── TRUST BAR ───── -->
+<div class="trust-bar">
+  <div class="container">
+    <div class="trust-bar-inner">
+      <div class="trust-item">
+        <svg class="trust-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M5 8h14M5 8a2 2 0 01-2-2V4m2 4v12a2 2 0 002 2h10a2 2 0 002-2V8m0 0a2 2 0 01-2-2V4"/></svg>
+        <span>Free Shipping over $200</span>
+      </div>
+      <div class="trust-item">
+        <svg class="trust-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>
+        <span>Australian Warranty</span>
+      </div>
+      <div class="trust-item">
+        <svg class="trust-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/><path d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
+        <span>Ships Locally from Australia</span>
+      </div>
+      <div class="trust-item">
+        <svg class="trust-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z"/></svg>
+        <span>No Hidden Import Fees</span>
+      </div>
+      <div class="trust-item">
+        <svg class="trust-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"/></svg>
+        <span>USA Pickleball Approved</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ───── PRODUCTS ───── -->
+<section id="products">
+  <div class="container">
+    <div class="section-head fade-up">
+      <div class="section-label">Our Collection</div>
+      <h2>Osaka Pickleball Paddles</h2>
+      <div class="gold-line"></div>
+    </div>
+    <div class="products-grid">
+
+      <div class="product-card fade-up" style="transition-delay:0.05s">
+        <div class="product-img-wrap">
+          <img src="https://takumisports.com.au/cdn/shop/files/Kazoku_Pickleball_Racket_Aquatic_Awe1.jpg?v=1760881822" alt="Kazoku Aquatic Awe" loading="lazy" />
+          <div class="product-badge">Bundle Deal</div>
+        </div>
+        <div class="product-body">
+          <div class="product-series">Kazoku Series</div>
+          <div class="product-name">Kazoku — Aquatic Awe</div>
+          <div class="product-desc">Lightweight thermoformed paddle with T700 Toray carbon face. Perfect for intermediate to advanced players seeking control.</div>
+          <div class="product-footer">
+            <div class="product-price"><span class="was">$210</span>$158</div>
+            <button class="add-btn" onclick="addToCart('Kazoku — Aquatic Awe', 158)">Add to Cart</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="product-card fade-up" style="transition-delay:0.1s">
+        <div class="product-img-wrap">
+          <img src="https://takumisports.com.au/cdn/shop/files/Kazoku_Pickleball_Racket_Future_Dusk2.jpg?v=1760864214" alt="Kazoku Future Dusk" loading="lazy" />
+          <div class="product-badge">Bundle Deal</div>
+        </div>
+        <div class="product-body">
+          <div class="product-series">Kazoku Series</div>
+          <div class="product-name">Kazoku — Future Dusk</div>
+          <div class="product-desc">Same premium T700 carbon construction in a bold dark colorway. Engineered for spin and precision at every level.</div>
+          <div class="product-footer">
+            <div class="product-price"><span class="was">$210</span>$158</div>
+            <button class="add-btn" onclick="addToCart('Kazoku — Future Dusk', 158)">Add to Cart</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="product-card fade-up" style="transition-delay:0.15s">
+        <div class="product-img-wrap">
+          <img src="https://takumisports.com.au/cdn/shop/files/KazokuWhite1.jpg?v=1760880765" alt="Kazoku Iconic White" loading="lazy" />
+          <div class="product-badge">Bundle Deal</div>
+        </div>
+        <div class="product-body">
+          <div class="product-series">Kazoku Series</div>
+          <div class="product-name">Kazoku — Iconic White</div>
+          <div class="product-desc">A clean, classic white finish with the same T700 Toray carbon performance. A favourite for players who like to make a statement.</div>
+          <div class="product-footer">
+            <div class="product-price"><span class="was">$210</span>$158</div>
+            <button class="add-btn" onclick="addToCart('Kazoku — Iconic White', 158)">Add to Cart</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="product-card fade-up" style="transition-delay:0.2s">
+        <div class="product-img-wrap">
+          <img src="https://takumisports.com.au/cdn/shop/files/PCK00007_9013_1_Pro_Tour_Pickleball_Racket_Iconic_Black.jpg?v=1762355461" alt="Pro Tour Iconic Black" loading="lazy" />
+          <div class="product-badge">20% Off</div>
+        </div>
+        <div class="product-body">
+          <div class="product-series">Pro Tour Series</div>
+          <div class="product-name">Pro Tour — Iconic Black</div>
+          <div class="product-desc">USA Pickleball approved. Advanced thermoformed boost with T700 Toray carbon — maximum power and spin for competitive players.</div>
+          <div class="product-footer">
+            <div class="product-price"><span class="was">$420</span>$338</div>
+            <button class="add-btn" onclick="addToCart('Pro Tour — Iconic Black', 338)">Add to Cart</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="product-card fade-up" style="transition-delay:0.25s">
+        <div class="product-img-wrap">
+          <img src="https://takumisports.com.au/cdn/shop/files/ProTourLTD.jpg?v=1761195668" alt="Pro Tour LTD Iconic Black" loading="lazy" />
+          <div class="product-badge">20% Off</div>
+        </div>
+        <div class="product-body">
+          <div class="product-series">Pro Tour LTD Series</div>
+          <div class="product-name">Pro Tour LTD — Iconic Black</div>
+          <div class="product-desc">The pinnacle. 18K Textreme carbon rotated 45° for smoother power transfer, elite consistency, and tournament-grade performance.</div>
+          <div class="product-footer">
+            <div class="product-price"><span class="was">$485</span>$388</div>
+            <button class="add-btn" onclick="addToCart('Pro Tour LTD — Iconic Black', 388)">Add to Cart</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Kazoku Bundle CTA card -->
+      <div class="product-card fade-up" style="transition-delay:0.3s; background: var(--forest); cursor: default;">
+        <div class="product-img-wrap" style="background: var(--moss);">
+          <div style="width:100%;height:100%;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:8px;color:var(--gold);">
+            <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87m-4-12a4 4 0 010 7.75"/></svg>
+            <span style="font-family:var(--ff-display);font-size:13px;letter-spacing:0.1em;">Partner Bundle</span>
+          </div>
+        </div>
+        <div class="product-body">
+          <div class="product-series" style="color:var(--gold);">Special Offer</div>
+          <div class="product-name" style="color:var(--cream);">Kazoku Bundle — 25% Off</div>
+          <div class="product-desc" style="color:rgba(245,240,232,0.6);">Buy any 2 Kazoku Series paddles together and save 25%. Get you and your partner on the court in style.</div>
+          <div class="product-footer">
+            <div class="product-price" style="color:var(--gold);">Save $79+</div>
+            <a href="#contact" class="add-btn" style="background:var(--gold);color:var(--forest);">Enquire</a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ───── PROMO BAND ───── -->
+<div class="promo-band">
+  <div class="container">
+    <div class="promo-inner">
+      <div class="promo-text fade-up">
+        <div class="section-label" style="color:var(--forest);">Limited Time</div>
+        <h2>Pro Tour Series<br>Now 20% Off</h2>
+        <p>Our highest-performing, USA Pickleball Approved paddles at an unbeatable price. Advanced thermoformed carbon construction meets tournament-level precision.</p>
+        <a href="#products" class="btn-primary">
+          Shop Pro Tour
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </a>
+      </div>
+      <div class="promo-stats fade-up" style="transition-delay:0.15s">
+        <div class="stat-box">
+          <div class="stat-num">18K</div>
+          <div class="stat-label">Textreme Carbon (LTD)</div>
+        </div>
+        <div class="stat-box">
+          <div class="stat-num">T700</div>
+          <div class="stat-label">Toray Carbon (Standard)</div>
+        </div>
+        <div class="stat-box">
+          <div class="stat-num">100%</div>
+          <div class="stat-label">AU Warranty</div>
+        </div>
+        <div class="stat-box">
+          <div class="stat-num">USA</div>
+          <div class="stat-label">Pickleball Approved</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ───── ABOUT ───── -->
+<section id="about">
+  <div class="container">
+    <div class="about-grid">
+      <div class="about-text fade-up">
+        <div class="section-label">Our Story</div>
+        <h2 style="color:var(--cream)">Built by Players,<br><em style="font-style:italic;color:var(--gold)">for Players.</em></h2>
+        <div class="gold-line"></div>
+        <p>Takumi Sports was born from a simple frustration: buying premium pickleball gear in Australia meant long waits, eye-watering import fees, and zero local support when things went wrong.</p>
+        <p>We set out to change that. By partnering directly with Osaka World, we bring you authentic, top-tier paddles shipped locally — with real warranty support from people who actually play the game.</p>
+        <p>Takumi (匠) is a Japanese word for artisan or master craftsperson. It's the standard we hold every product to, and the experience we aim to deliver to every customer.</p>
+        <div class="about-features">
+          <div class="feature-item">
+            <div class="feature-icon">🎯</div>
+            <div class="feature-title">Authentic Gear</div>
+            <div class="feature-desc">Official Osaka World retailer. No grey imports, no counterfeits.</div>
+          </div>
+          <div class="feature-item">
+            <div class="feature-icon">🇦🇺</div>
+            <div class="feature-title">Local Support</div>
+            <div class="feature-desc">Australian warranty and customer service from real players.</div>
+          </div>
+          <div class="feature-item">
+            <div class="feature-icon">🚚</div>
+            <div class="feature-title">Fast Shipping</div>
+            <div class="feature-desc">Ships from within Australia. No customs delays or hidden fees.</div>
+          </div>
+          <div class="feature-item">
+            <div class="feature-icon">🏆</div>
+            <div class="feature-title">Pro-Grade Tech</div>
+            <div class="feature-desc">Thermoformed carbon paddles used by tournament players worldwide.</div>
+          </div>
+        </div>
+      </div>
+      <div class="about-visual fade-up" style="transition-delay:0.2s">
+        <div class="about-card">
+          <div class="about-card-icon">🏓</div>
+          <h3>Osaka World Pickleball</h3>
+          <p>Born in Japan, refined for the world stage. Osaka World paddles combine Japanese manufacturing precision with cutting-edge materials science to deliver paddles trusted by professional players across the globe.</p>
+          <div class="about-card-badge">Official Australian Retailer</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ───── TESTIMONIALS ───── -->
+<section id="testimonials" style="background:var(--parchment)">
+  <div class="container">
+    <div class="section-head fade-up" style="text-align:center">
+      <div class="section-label">What Players Say</div>
+      <h2>Real Reviews</h2>
+      <div class="gold-line" style="margin:20px auto 0"></div>
+    </div>
+    <div class="testimonials-grid">
+      <div class="testimonial-card fade-up" style="transition-delay:0.05s">
+        <div class="stars">★★★★★</div>
+        <div class="testimonial-text">"The Pro Tour LTD is genuinely in another league. The spin I get off the Textreme carbon face is incredible. Shipped fast, arrived perfectly."</div>
+        <div class="testimonial-author">
+          <div class="author-avatar">J</div>
+          <div>
+            <div class="author-name">James T.</div>
+            <div class="author-loc">Sydney, NSW</div>
+          </div>
+        </div>
+      </div>
+      <div class="testimonial-card fade-up" style="transition-delay:0.1s">
+        <div class="stars">★★★★★</div>
+        <div class="testimonial-text">"Bought the Kazoku bundle for my wife and me. Perfect for recreational play and the 25% bundle deal is unbeatable. Arrived in 3 days!"</div>
+        <div class="testimonial-author">
+          <div class="author-avatar">M</div>
+          <div>
+            <div class="author-name">Mark & Sarah L.</div>
+            <div class="author-loc">Melbourne, VIC</div>
+          </div>
+        </div>
+      </div>
+      <div class="testimonial-card fade-up" style="transition-delay:0.15s">
+        <div class="stars">★★★★★</div>
+        <div class="testimonial-text">"Finally a local source for Osaka paddles. No import fees, legit warranty, and the team actually knows what they're talking about. Highly recommend."</div>
+        <div class="testimonial-author">
+          <div class="author-avatar">A</div>
+          <div>
+            <div class="author-name">Amelia R.</div>
+            <div class="author-loc">Brisbane, QLD</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ───── BLOG ───── -->
+<section id="blog">
+  <div class="container">
+    <div class="section-head fade-up">
+      <div class="section-label">Knowledge & News</div>
+      <h2>The Takumi Journal</h2>
+      <div class="gold-line"></div>
+    </div>
+    <div class="blog-grid">
+      <div class="blog-card fade-up" style="transition-delay:0.05s">
+        <div class="blog-img">
+          ❄️🔥
+          <div class="blog-cat">Technology</div>
+        </div>
+        <div class="blog-body">
+          <div class="blog-date">November 12, 2025</div>
+          <div class="blog-title">Cold Press vs Thermoformed — The Technology Behind Osaka Paddles</div>
+          <div class="blog-excerpt">Pickleball paddle technology has evolved rapidly. The way your paddle is built can completely change how it performs on court. We break down the key differences.</div>
+          <span class="blog-link">Read Article <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
+        </div>
+      </div>
+      <div class="blog-card fade-up" style="transition-delay:0.1s">
+        <div class="blog-img">
+          🏆⚡
+          <div class="blog-cat">Comparison</div>
+        </div>
+        <div class="blog-body">
+          <div class="blog-date">November 6, 2025</div>
+          <div class="blog-title">Pro Tour vs Pro Tour LTD — Which Paddle is Right for You?</div>
+          <div class="blog-excerpt">Both sit at the pinnacle of pickleball performance, but they're built for different players. Here's how to decide which Pro Tour paddle is your perfect match.</div>
+          <span class="blog-link">Read Article <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
+        </div>
+      </div>
+      <div class="blog-card fade-up" style="transition-delay:0.15s">
+        <div class="blog-img">
+          🎯✨
+          <div class="blog-cat">Deep Dive</div>
+        </div>
+        <div class="blog-body">
+          <div class="blog-date">November 4, 2025</div>
+          <div class="blog-title">Osaka Pro Tour LTD — Precision, Power, and Performance Elevated</div>
+          <div class="blog-excerpt">The 45° rotated 18K Textreme carbon construction delivers smoother power transfer and refined control. We explore what makes this paddle genuinely elite.</div>
+          <span class="blog-link">Read Article <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ───── CONTACT ───── -->
+<section id="contact">
+  <div class="container">
+    <div class="contact-grid">
+      <div class="contact-info fade-up">
+        <div class="section-label">Get in Touch</div>
+        <h2 style="color:var(--cream)">We'd Love to<br><em style="font-style:italic;color:var(--gold)">Hear from You.</em></h2>
+        <div class="gold-line" style="margin-bottom:24px"></div>
+        <p>Questions about which paddle suits your game? Interested in wholesale or community pricing? Our team is here to help.</p>
+        <div class="contact-detail">
+          <div class="contact-icon">📧</div>
+          <div class="contact-detail-text">
+            <strong>Email</strong>
+            <span>hello@takumisports.com.au</span>
+          </div>
+        </div>
+        <div class="contact-detail">
+          <div class="contact-icon">📍</div>
+          <div class="contact-detail-text">
+            <strong>Location</strong>
+            <span>Shipping Australia-Wide</span>
+          </div>
+        </div>
+        <div class="contact-detail">
+          <div class="contact-icon">⏱</div>
+          <div class="contact-detail-text">
+            <strong>Response Time</strong>
+            <span>We reply within 24 hours</span>
+          </div>
+        </div>
+        <div class="social-links">
+          <a href="https://www.instagram.com/takumisports.au/" target="_blank" class="social-btn" title="Instagram">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+          </a>
+          <a href="https://takumisports.com.au/" target="_blank" class="social-btn" title="Website">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z"/></svg>
+          </a>
+        </div>
+      </div>
+      <div class="contact-form fade-up" style="transition-delay:0.2s">
+        <form id="contactForm" onsubmit="submitForm(event)">
+          <div class="form-row">
+            <div class="form-group">
+              <label>First Name</label>
+              <input type="text" placeholder="Alex" required />
+            </div>
+            <div class="form-group">
+              <label>Last Name</label>
+              <input type="text" placeholder="Smith" required />
+            </div>
+          </div>
+          <div class="form-group">
+            <label>Email</label>
+            <input type="email" placeholder="alex@email.com" required />
+          </div>
+          <div class="form-group">
+            <label>Enquiry Type</label>
+            <select>
+              <option value="">Select a topic...</option>
+              <option>Product Question</option>
+              <option>Order / Shipping</option>
+              <option>Warranty Claim</option>
+              <option>Wholesale / Community Pricing</option>
+              <option>Other</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label>Message</label>
+            <textarea placeholder="Tell us how we can help..."></textarea>
+          </div>
+          <button type="submit" class="form-submit">Send Message</button>
+        </form>
+        <div class="form-success" id="formSuccess">
+          <div style="font-size:48px;margin-bottom:16px">✓</div>
+          <h3>Message Sent!</h3>
+          <p>Thanks for reaching out. We'll get back to you within 24 hours.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ───── NEWSLETTER ───── -->
+<div class="newsletter">
+  <div class="container">
+    <div class="newsletter-inner fade-up">
+      <h2>Stay Ahead<br>of the Game</h2>
+      <p>Join the Takumi community for first access to new drops and exclusive offers.</p>
+      <div class="newsletter-incentive">🎁 Get 10% off your first order when you sign up</div>
+      <div class="newsletter-form">
+        <input type="email" placeholder="Your email address" id="newsletterEmail" />
+        <button onclick="subscribeNewsletter()">Get 10% Off</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ───── FOOTER ───── -->
+<footer>
+  <div class="container">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <h3>Takumi<span>.</span></h3>
+        <p>Australia's home for premium Osaka World pickleball paddles. Authentic gear, local shipping, real support.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Shop</h4>
+        <ul>
+          <li><a href="#products">Kazoku Series</a></li>
+          <li><a href="#products">Pro Tour Series</a></li>
+          <li><a href="#products">Pro Tour LTD</a></li>
+          <li><a href="#products">Bundle Deals</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Company</h4>
+        <ul>
+          <li><a href="#about">About Us</a></li>
+          <li><a href="#blog">Journal</a></li>
+          <li><a href="#contact">Contact</a></li>
+          <li><a href="https://www.instagram.com/takumisports.au/" target="_blank">Instagram</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Support</h4>
+        <ul>
+          <li><a href="#contact">Warranty</a></li>
+          <li><a href="#contact">Shipping Info</a></li>
+          <li><a href="#contact">Returns</a></li>
+          <li><a href="#contact">FAQ</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div class="footer-copy">© 2026 Takumi Sports Australia. All rights reserved.</div>
+      <div class="footer-legal">
+        <a href="#">Privacy Policy</a>
+        <a href="#">Terms of Service</a>
+        <a href="#">Refund Policy</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<!-- ───── TOAST ───── -->
+<div class="toast" id="toast"></div>
+
+<!-- ───── SCRIPTS ───── -->
+<script>
+  // ─── Scroll Nav
+  const navbar = document.getElementById('navbar');
+  window.addEventListener('scroll', () => {
+    navbar.classList.toggle('scrolled', window.scrollY > 40);
+  });
+
+  // ─── Mobile Menu
+  function toggleMenu() {
+    const h = document.getElementById('hamburger');
+    const m = document.getElementById('mobileMenu');
+    h.classList.toggle('open');
+    m.classList.toggle('open');
+    document.body.style.overflow = m.classList.contains('open') ? 'hidden' : '';
+  }
+  function closeMenu() {
+    document.getElementById('hamburger').classList.remove('open');
+    document.getElementById('mobileMenu').classList.remove('open');
+    document.body.style.overflow = '';
+  }
+
+  // ─── Fade-up observer
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.classList.add('visible');
+        observer.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.12 });
+  document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+
+  // ─── Toast
+  function showToast(msg) {
+    const t = document.getElementById('toast');
+    t.textContent = msg;
+    t.classList.add('show');
+    setTimeout(() => t.classList.remove('show'), 3200);
+  }
+
+  // ─── Cart
+  let cart = [];
+  function addToCart(name, price) {
+    cart.push({ name, price });
+    showToast(`✓ ${name} added to cart`);
+  }
+
+  // ─── Contact form
+  function submitForm(e) {
+    e.preventDefault();
+    document.getElementById('contactForm').style.display = 'none';
+    document.getElementById('formSuccess').classList.add('show');
+    showToast('✓ Message sent! We\'ll be in touch within 24hrs.');
+  }
+
+  // ─── Newsletter
+  function subscribeNewsletter() {
+    const email = document.getElementById('newsletterEmail').value;
+    if (!email || !email.includes('@')) {
+      showToast('Please enter a valid email address.');
+      return;
+    }
+    showToast('🎁 Welcome! Check your inbox for your 10% off code.');
+    document.getElementById('newsletterEmail').value = '';
+  }
+</script>
+</body>
+</html>
