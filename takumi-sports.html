@@ -1,0 +1,1046 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>Takumi Sports — Premium Pickleball Paddles Australia</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:ital,wght@0,300;0,500;0,700;0,900;1,700&family=Barlow:wght@300;400;500&display=swap" rel="stylesheet"/>
+<style>
+:root{
+  --black:#0a0a0a;
+  --off-black:#111111;
+  --dark:#1a1a1a;
+  --mid:#2e2e2e;
+  --border:#242424;
+  --grey:#888;
+  --light:#ccc;
+  --white:#f5f5f5;
+  --accent:#00e5ff;
+  --accent2:#ff3c3c;
+  --ff-head:'Barlow Condensed',sans-serif;
+  --ff-body:'Barlow',sans-serif;
+  --nav-h:64px;
+  --r:3px;
+  --cart-w:420px;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:var(--ff-body);background:var(--black);color:var(--white);overflow-x:hidden;font-size:15px;line-height:1.6}
+img{display:block;max-width:100%}
+a{text-decoration:none;color:inherit}
+ul{list-style:none}
+button{cursor:pointer;border:none;font-family:var(--ff-body)}
+::-webkit-scrollbar{width:4px}
+::-webkit-scrollbar-track{background:var(--black)}
+::-webkit-scrollbar-thumb{background:var(--mid);border-radius:2px}
+.container{max-width:1280px;margin:0 auto;padding:0 32px}
+.tag{font-family:var(--ff-head);font-size:11px;font-weight:700;letter-spacing:0.2em;text-transform:uppercase;color:var(--accent)}
+.fade-up{opacity:0;transform:translateY(30px);transition:opacity .6s ease,transform .6s ease}
+.fade-up.vis{opacity:1;transform:none}
+
+/* ANN BAR */
+.ann-bar{background:var(--accent);color:var(--black);text-align:center;padding:10px;font-family:var(--ff-head);font-size:12px;font-weight:900;letter-spacing:0.16em;text-transform:uppercase}
+
+/* NAV */
+nav{position:sticky;top:0;z-index:200;height:var(--nav-h);background:rgba(10,10,10,.97);border-bottom:1px solid var(--border);backdrop-filter:blur(12px);display:flex;align-items:center}
+.nav-inner{display:flex;align-items:center;justify-content:space-between;width:100%;max-width:1280px;margin:0 auto;padding:0 32px}
+.nav-logo{font-family:var(--ff-head);font-size:28px;font-weight:900;letter-spacing:-0.01em;color:var(--white);text-transform:uppercase}
+.nav-logo span{color:var(--accent)}
+.nav-links{display:flex;align-items:center;gap:32px}
+.nav-links a{font-family:var(--ff-head);font-size:13px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:var(--grey);transition:color .2s}
+.nav-links a:hover{color:var(--white)}
+.nav-right{display:flex;align-items:center;gap:14px}
+.cart-btn{position:relative;background:none;color:var(--white);padding:9px 16px;display:flex;align-items:center;gap:9px;font-family:var(--ff-head);font-size:13px;font-weight:900;letter-spacing:0.1em;text-transform:uppercase;border:1px solid var(--border);border-radius:var(--r);transition:border-color .2s,color .2s}
+.cart-btn:hover{border-color:var(--accent);color:var(--accent)}
+.cart-count{background:var(--accent);color:var(--black);font-size:10px;font-weight:900;min-width:18px;height:18px;border-radius:9px;display:flex;align-items:center;justify-content:center;padding:0 4px;line-height:1;transition:transform .25s}
+.cart-count.pop{transform:scale(1.5)}
+.hamburger{display:none;flex-direction:column;gap:5px;background:none;padding:4px}
+.hamburger span{display:block;width:22px;height:2px;background:var(--white);border-radius:1px;transition:transform .3s,opacity .3s}
+.hamburger.open span:nth-child(1){transform:translateY(7px) rotate(45deg)}
+.hamburger.open span:nth-child(2){opacity:0}
+.hamburger.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
+
+/* MOBILE MENU */
+.mob-menu{display:none;position:fixed;inset:0;top:var(--nav-h);background:var(--black);z-index:150;flex-direction:column;padding:48px 32px;gap:0;border-top:1px solid var(--border)}
+.mob-menu.open{display:flex}
+.mob-menu a{font-family:var(--ff-head);font-size:44px;font-weight:900;text-transform:uppercase;color:var(--white);padding:14px 0;border-bottom:1px solid var(--border);transition:color .2s}
+.mob-menu a:hover{color:var(--accent)}
+
+/* CART OVERLAY + DRAWER */
+.cart-overlay{position:fixed;inset:0;background:rgba(0,0,0,.7);z-index:300;opacity:0;pointer-events:none;transition:opacity .3s;backdrop-filter:blur(3px)}
+.cart-overlay.open{opacity:1;pointer-events:all}
+.cart-drawer{position:fixed;right:0;top:0;bottom:0;width:var(--cart-w);background:var(--off-black);border-left:1px solid var(--border);z-index:301;display:flex;flex-direction:column;transform:translateX(105%);transition:transform .4s cubic-bezier(.22,1,.36,1)}
+.cart-drawer.open{transform:translateX(0)}
+.cart-hdr{display:flex;align-items:center;justify-content:space-between;padding:22px 26px;border-bottom:1px solid var(--border)}
+.cart-hdr h2{font-family:var(--ff-head);font-size:22px;font-weight:900;text-transform:uppercase;letter-spacing:.06em}
+.cart-hdr h2 em{color:var(--accent);font-style:normal;font-size:14px;margin-left:8px}
+.cart-close-btn{background:none;color:var(--grey);font-size:22px;line-height:1;transition:color .2s;padding:2px}
+.cart-close-btn:hover{color:var(--white)}
+.cart-body{flex:1;overflow-y:auto;padding:18px 26px}
+.cart-empty-state{text-align:center;padding:72px 0;color:var(--grey)}
+.cart-empty-state p{font-family:var(--ff-head);font-size:20px;font-weight:900;text-transform:uppercase;color:var(--white);margin-top:16px;margin-bottom:6px}
+.cart-empty-state span{font-size:13px}
+.c-item{display:flex;gap:14px;padding:16px 0;border-bottom:1px solid var(--border)}
+.c-item-img{width:76px;height:76px;border-radius:var(--r);overflow:hidden;background:var(--dark);flex-shrink:0}
+.c-item-img img{width:100%;height:100%;object-fit:cover}
+.c-item-info{flex:1;min-width:0}
+.c-item-series{font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--grey);margin-bottom:2px}
+.c-item-name{font-family:var(--ff-head);font-size:15px;font-weight:900;text-transform:uppercase;line-height:1.2;margin-bottom:10px}
+.c-item-bottom{display:flex;align-items:center;justify-content:space-between}
+.c-item-price{font-family:var(--ff-head);font-size:18px;font-weight:900;color:var(--accent)}
+.qty-ctrl{display:flex;align-items:center;border:1px solid var(--border);border-radius:var(--r);overflow:hidden}
+.qty-btn{background:none;color:var(--white);width:28px;height:28px;font-size:16px;display:flex;align-items:center;justify-content:center;transition:background .15s}
+.qty-btn:hover{background:var(--mid)}
+.qty-v{width:30px;text-align:center;font-family:var(--ff-head);font-size:13px;font-weight:700;color:var(--white);pointer-events:none}
+.c-item-del{background:none;color:var(--grey);font-size:16px;padding:3px;transition:color .2s;align-self:flex-start;line-height:1}
+.c-item-del:hover{color:var(--accent2)}
+.cart-ftr{padding:18px 26px;border-top:1px solid var(--border);background:var(--dark)}
+.ship-bar{background:var(--off-black);border-radius:var(--r);padding:12px 14px;margin-bottom:14px}
+.ship-bar-lbl{display:flex;justify-content:space-between;font-size:12px;color:var(--grey);margin-bottom:7px}
+.ship-bar-lbl .accent{color:var(--accent);font-weight:600}
+.ship-track{height:3px;background:var(--border);border-radius:2px;overflow:hidden}
+.ship-fill{height:100%;background:var(--accent);border-radius:2px;transition:width .4s ease}
+.promo-row{display:flex;gap:8px;margin-bottom:14px}
+.promo-row input{flex:1;background:var(--black);border:1px solid var(--border);border-radius:var(--r);padding:10px 13px;color:var(--white);font-family:var(--ff-body);font-size:13px;outline:none;transition:border-color .2s}
+.promo-row input::placeholder{color:var(--mid)}
+.promo-row input:focus{border-color:var(--accent)}
+.promo-row button{background:var(--mid);color:var(--white);padding:10px 16px;border-radius:var(--r);font-family:var(--ff-head);font-size:12px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;transition:background .2s}
+.promo-row button:hover{background:#444}
+.cart-subtotal-row{display:flex;justify-content:space-between;align-items:center;margin-bottom:6px}
+.cart-subtotal-row span{font-family:var(--ff-head);font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:var(--grey)}
+.cart-subtotal-row strong{font-family:var(--ff-head);font-size:24px;font-weight:900}
+.ship-note{font-size:12px;color:var(--grey);margin-bottom:14px;padding:9px 12px;background:rgba(0,229,255,.06);border:1px solid rgba(0,229,255,.15);border-radius:var(--r);text-align:center}
+.ship-note span{color:var(--accent);font-weight:600}
+.checkout-btn{width:100%;background:var(--accent);color:var(--black);padding:16px;font-family:var(--ff-head);font-size:15px;font-weight:900;letter-spacing:.12em;text-transform:uppercase;border-radius:var(--r);transition:background .2s,transform .2s;margin-bottom:9px}
+.checkout-btn:hover{background:#33ecff;transform:translateY(-1px)}
+.keep-btn{width:100%;background:none;color:var(--grey);padding:11px;font-family:var(--ff-head);font-size:12px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;border:1px solid var(--border);border-radius:var(--r);transition:color .2s,border-color .2s}
+.keep-btn:hover{color:var(--white);border-color:var(--white)}
+
+/* CHECKOUT MODAL */
+.co-overlay{position:fixed;inset:0;background:rgba(0,0,0,.85);z-index:400;display:none;align-items:center;justify-content:center;padding:16px;backdrop-filter:blur(8px)}
+.co-overlay.open{display:flex}
+.co-modal{background:var(--off-black);border:1px solid var(--border);border-radius:8px;width:100%;max-width:560px;max-height:92vh;overflow-y:auto}
+.co-modal-hdr{display:flex;align-items:center;justify-content:space-between;padding:22px 28px;border-bottom:1px solid var(--border);position:sticky;top:0;background:var(--off-black);z-index:2}
+.co-modal-hdr h2{font-family:var(--ff-head);font-size:22px;font-weight:900;text-transform:uppercase;letter-spacing:.06em}
+.co-modal-close{background:none;color:var(--grey);font-size:20px;line-height:1;transition:color .2s}
+.co-modal-close:hover{color:var(--white)}
+.co-body{padding:26px}
+.co-summary{background:var(--dark);border-radius:var(--r);padding:18px;margin-bottom:22px}
+.co-summary h3{font-family:var(--ff-head);font-size:11px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--grey);margin-bottom:12px}
+.co-row{display:flex;justify-content:space-between;align-items:center;padding:8px 0;border-bottom:1px solid var(--border);font-size:13px}
+.co-row:last-of-type{border-bottom:none}
+.co-row-name{color:var(--light);flex:1}
+.co-row-qty{color:var(--grey);font-size:12px;margin:0 10px}
+.co-row-price{font-family:var(--ff-head);font-weight:700;color:var(--white)}
+.co-grand{display:flex;justify-content:space-between;align-items:center;padding-top:12px;margin-top:4px;border-top:1px solid var(--border)}
+.co-grand span{font-family:var(--ff-head);font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.12em;color:var(--grey)}
+.co-grand strong{font-family:var(--ff-head);font-size:26px;font-weight:900;color:var(--accent)}
+.sect-title{font-family:var(--ff-head);font-size:11px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--grey);padding-bottom:8px;border-bottom:1px solid var(--border);margin-bottom:14px;margin-top:22px}
+.fg2{margin-bottom:13px}
+.fg2 label{display:block;font-family:var(--ff-head);font-size:10px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--grey);margin-bottom:6px}
+.fg2 input,.fg2 select{width:100%;background:var(--dark);border:1px solid var(--border);border-radius:var(--r);padding:12px 14px;color:var(--white);font-family:var(--ff-body);font-size:14px;outline:none;transition:border-color .2s;appearance:none}
+.fg2 input::placeholder{color:#444}
+.fg2 input:focus,.fg2 select:focus{border-color:var(--accent)}
+.fg2 select option{background:var(--dark)}
+.row2{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.pay-methods{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:18px}
+.pay-badge{background:var(--dark);border:1px solid var(--border);border-radius:4px;padding:5px 11px;font-size:11px;font-weight:700;letter-spacing:.04em;color:var(--grey)}
+.place-btn{width:100%;background:var(--accent);color:var(--black);padding:16px;font-family:var(--ff-head);font-size:15px;font-weight:900;letter-spacing:.12em;text-transform:uppercase;border-radius:var(--r);transition:background .2s,transform .2s;margin-top:6px}
+.place-btn:hover{background:#33ecff;transform:translateY(-1px)}
+.order-done{text-align:center;padding:60px 28px;display:none}
+.order-done.show{display:block}
+.done-circle{width:72px;height:72px;border-radius:50%;background:rgba(0,229,255,.1);border:2px solid var(--accent);display:flex;align-items:center;justify-content:center;margin:0 auto 22px;font-size:30px;color:var(--accent)}
+.order-done h2{font-family:var(--ff-head);font-size:34px;font-weight:900;text-transform:uppercase;margin-bottom:12px}
+.order-done p{color:var(--grey);font-size:14px;line-height:1.8;margin-bottom:18px}
+.order-done .order-ref{font-family:var(--ff-head);font-size:13px;color:var(--accent);letter-spacing:.1em}
+
+/* HERO */
+#home{min-height:100vh;background:var(--black);display:flex;align-items:center;position:relative;overflow:hidden}
+.h-grid{position:absolute;inset:0;background-image:linear-gradient(rgba(0,229,255,.035) 1px,transparent 1px),linear-gradient(90deg,rgba(0,229,255,.035) 1px,transparent 1px);background-size:56px 56px}
+.h-glow{position:absolute;left:-250px;top:50%;transform:translateY(-50%);width:800px;height:800px;border-radius:50%;background:radial-gradient(circle,rgba(0,229,255,.05) 0%,transparent 60%);pointer-events:none}
+.h-content{position:relative;z-index:2;max-width:860px}
+.h-tag{display:inline-flex;align-items:center;gap:10px;margin-bottom:24px;background:rgba(0,229,255,.07);border:1px solid rgba(0,229,255,.18);border-radius:2px;padding:6px 14px}
+.h-dot{width:7px;height:7px;border-radius:50%;background:var(--accent);animation:dot-blink 1.6s ease-in-out infinite}
+@keyframes dot-blink{0%,100%{opacity:1}50%{opacity:.25}}
+.h-tag span{font-family:var(--ff-head);font-size:11px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--accent)}
+.h-title{font-family:var(--ff-head);font-size:clamp(68px,11vw,152px);font-weight:900;line-height:.9;text-transform:uppercase;letter-spacing:-.02em;color:var(--white);margin-bottom:26px}
+.h-title .stroke{-webkit-text-stroke:2px var(--white);color:transparent}
+.h-title .accent-w{color:var(--accent)}
+.h-sub{font-size:16px;color:var(--grey);max-width:460px;margin-bottom:42px;line-height:1.8;font-weight:300}
+.h-btns{display:flex;flex-wrap:wrap;gap:12px;align-items:center}
+.btn-p{display:inline-flex;align-items:center;gap:10px;background:var(--accent);color:var(--black);font-family:var(--ff-head);font-size:13px;font-weight:900;letter-spacing:.12em;text-transform:uppercase;padding:15px 34px;border-radius:var(--r);transition:background .2s,transform .2s;border:none}
+.btn-p:hover{background:#33ecff;transform:translateY(-2px)}
+.btn-g{display:inline-flex;align-items:center;gap:8px;color:var(--white);font-family:var(--ff-head);font-size:13px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;padding:15px 34px;border-radius:var(--r);border:1px solid var(--border);transition:border-color .2s}
+.btn-g:hover{border-color:var(--white)}
+.h-stats{display:flex;gap:44px;margin-top:64px;padding-top:44px;border-top:1px solid var(--border);flex-wrap:wrap}
+.h-stat-n{font-family:var(--ff-head);font-size:36px;font-weight:900;line-height:1;color:var(--white)}
+.h-stat-l{font-size:11px;color:var(--grey);letter-spacing:.08em;text-transform:uppercase;margin-top:4px}
+.h-scroll{position:absolute;bottom:34px;right:48px;display:flex;align-items:center;gap:10px;color:var(--grey);font-family:var(--ff-head);font-size:11px;letter-spacing:.14em;text-transform:uppercase}
+.h-arr{width:32px;height:32px;border:1px solid var(--border);border-radius:50%;display:flex;align-items:center;justify-content:center;animation:arr-bob 2s ease-in-out infinite}
+@keyframes arr-bob{0%,100%{transform:translateY(0)}50%{transform:translateY(5px)}}
+
+/* TRUST */
+.trust-bar{background:var(--off-black);border-top:1px solid var(--border);border-bottom:1px solid var(--border);padding:14px 0;overflow:hidden}
+.t-track{display:flex;gap:56px;animation:marquee 22s linear infinite;width:max-content}
+@keyframes marquee{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+.t-item{display:flex;align-items:center;gap:9px;white-space:nowrap;font-family:var(--ff-head);font-size:11px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--grey)}
+.t-item-dot{width:5px;height:5px;border-radius:50%;background:var(--accent);flex-shrink:0}
+
+/* SECTION */
+section{padding:100px 0}
+.section-hdr{margin-bottom:60px}
+.section-hdr h2{font-family:var(--ff-head);font-size:clamp(44px,6vw,72px);font-weight:900;text-transform:uppercase;line-height:.95;letter-spacing:-.01em;margin-top:10px}
+.a-line{width:40px;height:3px;background:var(--accent);margin-top:18px}
+
+/* PRODUCTS */
+#products{background:var(--black)}
+.p-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:2px;background:var(--border)}
+.p-card{background:var(--black);transition:background .2s;cursor:pointer}
+.p-card:hover{background:var(--off-black)}
+.p-img{aspect-ratio:1/1;overflow:hidden;background:var(--dark);position:relative}
+.p-img img{width:100%;height:100%;object-fit:cover;transition:transform .5s ease}
+.p-card:hover .p-img img{transform:scale(1.06)}
+.p-bdg{position:absolute;top:0;left:0;font-family:var(--ff-head);font-size:10px;font-weight:900;letter-spacing:.12em;text-transform:uppercase;padding:6px 12px}
+.p-bdg.sale{background:var(--accent2);color:var(--white)}
+.p-bdg.bundle{background:var(--accent);color:var(--black)}
+.p-body{padding:18px 22px 22px}
+.p-series{font-family:var(--ff-head);font-size:10px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--grey);margin-bottom:4px}
+.p-name{font-family:var(--ff-head);font-size:22px;font-weight:900;text-transform:uppercase;line-height:1.1;margin-bottom:7px}
+.p-desc{font-size:13px;color:var(--grey);line-height:1.6;margin-bottom:16px;font-weight:300}
+.p-foot{display:flex;align-items:center;justify-content:space-between;gap:8px}
+.p-price{font-family:var(--ff-head);font-size:24px;font-weight:900}
+.p-price .was{font-size:14px;font-weight:300;color:var(--grey);text-decoration:line-through;margin-right:6px}
+.atc{background:var(--white);color:var(--black);font-family:var(--ff-head);font-size:12px;font-weight:900;letter-spacing:.1em;text-transform:uppercase;padding:11px 18px;border-radius:var(--r);transition:background .2s,transform .2s}
+.atc:hover{background:var(--accent);transform:translateY(-1px)}
+
+/* FEATURE STRIP */
+.fstrip{background:var(--accent);padding:0}
+.fstrip-inner{display:grid;grid-template-columns:repeat(3,1fr)}
+.fs-item{padding:44px 36px;border-right:1px solid rgba(0,0,0,.12);display:flex;align-items:flex-start;gap:18px}
+.fs-item:last-child{border-right:none}
+.fs-icon{font-size:30px;line-height:1;flex-shrink:0}
+.fs-title{font-family:var(--ff-head);font-size:20px;font-weight:900;text-transform:uppercase;color:var(--black);margin-bottom:6px}
+.fs-desc{font-size:13px;color:rgba(0,0,0,.6);line-height:1.6;font-weight:300}
+
+/* ABOUT */
+#about{background:var(--off-black)}
+.ab-split{display:grid;grid-template-columns:1fr 1fr;gap:0;min-height:560px}
+.ab-left{padding:80px 60px 80px 0;display:flex;flex-direction:column;justify-content:center}
+.ab-left p{font-size:15px;color:var(--grey);line-height:1.9;margin-bottom:16px;font-weight:300}
+.ab-right{background:var(--dark);padding:72px 56px;display:flex;flex-direction:column;justify-content:center;gap:24px;border-left:1px solid var(--border)}
+.ab-stat{border-bottom:1px solid var(--border);padding-bottom:24px}
+.ab-stat:last-child{border-bottom:none;padding-bottom:0}
+.ab-stat-n{font-family:var(--ff-head);font-size:64px;font-weight:900;line-height:.9;color:var(--white)}
+.ab-stat-n span{color:var(--accent)}
+.ab-stat-d{font-size:13px;color:var(--grey);margin-top:7px}
+
+/* TESTIMONIALS */
+#testimonials{background:var(--black)}
+.tst-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;background:var(--border)}
+.tst-card{background:var(--black);padding:34px;transition:background .2s}
+.tst-card:hover{background:var(--off-black)}
+.tst-stars{display:flex;gap:2px;margin-bottom:18px}
+.tst-stars span{color:var(--accent);font-size:14px}
+.tst-quote{font-family:var(--ff-head);font-size:19px;font-weight:300;font-style:italic;line-height:1.55;color:var(--light);margin-bottom:22px}
+.tst-div{width:30px;height:2px;background:var(--accent);margin-bottom:18px}
+.tst-name{font-family:var(--ff-head);font-size:14px;font-weight:700;text-transform:uppercase;letter-spacing:.1em}
+.tst-loc{font-size:12px;color:var(--grey);margin-top:3px}
+
+/* BLOG */
+#blog{background:var(--off-black)}
+.bl-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;background:var(--border)}
+.bl-card{background:var(--off-black);transition:background .2s;cursor:pointer}
+.bl-card:hover{background:var(--dark)}
+.bl-img{aspect-ratio:16/9;background:var(--dark);display:flex;align-items:center;justify-content:center;font-size:50px;position:relative;overflow:hidden}
+.bl-cat{position:absolute;bottom:0;left:0;right:0;padding:9px 14px;background:linear-gradient(transparent,rgba(0,0,0,.75));font-family:var(--ff-head);font-size:10px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--accent)}
+.bl-body{padding:22px}
+.bl-date{font-size:11px;color:var(--grey);letter-spacing:.08em;margin-bottom:7px}
+.bl-title{font-family:var(--ff-head);font-size:20px;font-weight:900;text-transform:uppercase;line-height:1.15;margin-bottom:9px}
+.bl-exc{font-size:13px;color:var(--grey);line-height:1.6;margin-bottom:14px;font-weight:300}
+.bl-read{font-family:var(--ff-head);font-size:12px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--accent);display:inline-flex;align-items:center;gap:6px;transition:gap .2s}
+.bl-card:hover .bl-read{gap:10px}
+
+/* CONTACT */
+#contact{background:var(--black)}
+.ct-split{display:grid;grid-template-columns:1fr 1fr;gap:72px;align-items:start}
+.ct-left p{font-size:15px;color:var(--grey);margin-top:16px;margin-bottom:36px;line-height:1.9;font-weight:300}
+.ct-detail{display:flex;align-items:flex-start;gap:14px;margin-bottom:18px;padding:16px;border:1px solid var(--border);border-radius:var(--r);transition:border-color .2s}
+.ct-detail:hover{border-color:var(--accent)}
+.ct-icon{width:38px;height:38px;background:rgba(0,229,255,.07);border-radius:var(--r);display:flex;align-items:center;justify-content:center;font-size:17px;flex-shrink:0}
+.ct-strong{font-family:var(--ff-head);font-size:10px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--accent);margin-bottom:3px;display:block}
+.ct-val{font-size:14px;color:var(--light)}
+.soc-row{display:flex;gap:9px;margin-top:28px}
+.soc-btn{width:42px;height:42px;border:1px solid var(--border);border-radius:var(--r);display:flex;align-items:center;justify-content:center;color:var(--grey);transition:border-color .2s,color .2s,background .2s}
+.soc-btn:hover{border-color:var(--accent);color:var(--accent);background:rgba(0,229,255,.05)}
+.ct-form{background:var(--off-black);border:1px solid var(--border);border-radius:var(--r);padding:32px}
+.ct-form-ttl{font-family:var(--ff-head);font-size:20px;font-weight:900;text-transform:uppercase;margin-bottom:26px;letter-spacing:.04em}
+.cf-g{margin-bottom:14px}
+.cf-g label{display:block;font-family:var(--ff-head);font-size:10px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--grey);margin-bottom:6px}
+.cf-g input,.cf-g textarea,.cf-g select{width:100%;background:var(--dark);border:1px solid var(--border);border-radius:var(--r);padding:12px 14px;color:var(--white);font-family:var(--ff-body);font-size:14px;outline:none;transition:border-color .2s;appearance:none}
+.cf-g input::placeholder{color:#444}
+.cf-g input:focus,.cf-g textarea:focus,.cf-g select:focus{border-color:var(--accent)}
+.cf-g textarea{resize:vertical;min-height:110px}
+.cf-row{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.cf-sub{width:100%;background:var(--accent);color:var(--black);padding:15px;font-family:var(--ff-head);font-size:14px;font-weight:900;letter-spacing:.12em;text-transform:uppercase;border-radius:var(--r);transition:background .2s,transform .2s;margin-top:6px}
+.cf-sub:hover{background:#33ecff;transform:translateY(-1px)}
+.cf-done{display:none;text-align:center;padding:48px 0}
+.cf-done.show{display:block}
+.cf-done-ico{font-size:44px;margin-bottom:14px}
+.cf-done h3{font-family:var(--ff-head);font-size:24px;font-weight:900;text-transform:uppercase;color:var(--accent);margin-bottom:8px}
+.cf-done p{font-size:13px;color:var(--grey)}
+
+/* NEWSLETTER */
+.nl{background:var(--off-black);padding:76px 0;border-top:1px solid var(--border)}
+.nl-inner{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:center}
+.nl-left h2{font-family:var(--ff-head);font-size:clamp(40px,5vw,64px);font-weight:900;text-transform:uppercase;line-height:.95;letter-spacing:-.01em}
+.nl-left h2 span{color:var(--accent)}
+.nl-left p{color:var(--grey);font-size:14px;margin-top:12px;font-weight:300}
+.nl-inc{display:flex;align-items:center;gap:10px;margin-bottom:16px;padding:11px 14px;background:rgba(0,229,255,.06);border:1px solid rgba(0,229,255,.16);border-radius:var(--r)}
+.nl-inc span:first-child{font-size:18px}
+.nl-inc span:last-child{font-family:var(--ff-head);font-size:13px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--accent)}
+.nl-form{display:flex;border-radius:var(--r);overflow:hidden}
+.nl-form input{flex:1;background:var(--dark);border:1px solid var(--border);border-right:none;padding:14px 16px;color:var(--white);font-family:var(--ff-body);font-size:14px;outline:none;transition:border-color .2s}
+.nl-form input::placeholder{color:var(--grey)}
+.nl-form input:focus{border-color:var(--accent)}
+.nl-form button{background:var(--accent);color:var(--black);padding:14px 22px;font-family:var(--ff-head);font-size:12px;font-weight:900;letter-spacing:.12em;text-transform:uppercase;transition:background .2s;white-space:nowrap}
+.nl-form button:hover{background:#33ecff}
+
+/* FOOTER */
+footer{background:var(--off-black);padding:56px 0 26px;border-top:1px solid var(--border)}
+.ft-top{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:44px;margin-bottom:44px}
+.ft-brand .logo{font-family:var(--ff-head);font-size:26px;font-weight:900;text-transform:uppercase;margin-bottom:12px}
+.ft-brand .logo span{color:var(--accent)}
+.ft-brand p{font-size:13px;color:var(--grey);line-height:1.8;max-width:250px;font-weight:300}
+.ft-col h4{font-family:var(--ff-head);font-size:10px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--accent);margin-bottom:16px}
+.ft-col li{margin-bottom:9px}
+.ft-col a{font-size:13px;color:var(--grey);transition:color .2s}
+.ft-col a:hover{color:var(--white)}
+.ft-bot{border-top:1px solid var(--border);padding-top:20px;display:flex;flex-wrap:wrap;gap:12px;justify-content:space-between;align-items:center}
+.ft-copy{font-size:12px;color:var(--grey)}
+.ft-legal{display:flex;gap:18px}
+.ft-legal a{font-size:12px;color:var(--grey);transition:color .2s}
+.ft-legal a:hover{color:var(--white)}
+
+/* TOAST */
+.toast{position:fixed;bottom:26px;left:50%;transform:translateX(-50%) translateY(80px);background:var(--off-black);border:1px solid var(--accent);color:var(--white);padding:12px 22px;border-radius:var(--r);font-family:var(--ff-head);font-size:13px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;z-index:9999;opacity:0;transition:all .4s cubic-bezier(.34,1.56,.64,1);white-space:nowrap;pointer-events:none}
+.toast.show{transform:translateX(-50%) translateY(0);opacity:1}
+
+/* RESPONSIVE */
+@media(max-width:1024px){
+  .fstrip-inner{grid-template-columns:1fr}
+  .fs-item{border-right:none;border-bottom:1px solid rgba(0,0,0,.12)}
+  .fs-item:last-child{border-bottom:none}
+  .nl-inner{grid-template-columns:1fr}
+  .ft-top{grid-template-columns:1fr 1fr}
+  .ft-brand{grid-column:1/-1}
+}
+@media(max-width:768px){
+  section{padding:68px 0}
+  .container{padding:0 18px}
+  .nav-links{display:none}
+  .hamburger{display:flex}
+  .h-title{font-size:clamp(52px,15vw,80px)}
+  .h-stats{gap:24px}
+  .ab-split{grid-template-columns:1fr}
+  .ab-left{padding:0 0 44px}
+  .ab-right{padding:44px 28px;border-left:none;border-top:1px solid var(--border)}
+  .tst-grid{grid-template-columns:1fr}
+  .bl-grid{grid-template-columns:1fr}
+  .ct-split{grid-template-columns:1fr;gap:44px}
+  .ft-top{grid-template-columns:1fr}
+  .h-scroll{display:none}
+  .cart-drawer{width:100%}
+  .nl-form{flex-direction:column}
+  .nl-form input{border-right:1px solid var(--border);border-bottom:none}
+  .p-grid{grid-template-columns:1fr 1fr}
+  .row2{grid-template-columns:1fr}
+  .cf-row{grid-template-columns:1fr}
+}
+@media(max-width:480px){
+  .p-grid{grid-template-columns:1fr}
+  .h-btns{flex-direction:column;align-items:flex-start}
+}
+
+/* PDP MODAL */
+.pdp-overlay{position:fixed;inset:0;background:rgba(0,0,0,.9);z-index:500;display:none;align-items:center;justify-content:center;padding:16px;backdrop-filter:blur(10px)}
+.pdp-overlay.open{display:flex}
+.pdp-modal{background:var(--off-black);border:1px solid var(--border);border-radius:8px;width:100%;max-width:980px;max-height:92vh;overflow-y:auto;display:grid;grid-template-columns:1fr 1fr}
+.pdp-imgs{position:sticky;top:0;height:100%;min-height:400px;background:var(--dark);display:flex;flex-direction:column;gap:2px}
+.pdp-main-img{flex:1;overflow:hidden;min-height:360px;background:var(--dark)}
+.pdp-main-img img{width:100%;height:100%;object-fit:cover;transition:opacity .3s}
+.pdp-thumbs{display:flex;gap:2px;background:var(--border)}
+.pdp-thumb{flex:1;aspect-ratio:1/1;overflow:hidden;cursor:pointer;opacity:.5;transition:opacity .2s;background:var(--dark)}
+.pdp-thumb.active,.pdp-thumb:hover{opacity:1}
+.pdp-thumb img{width:100%;height:100%;object-fit:cover}
+.pdp-info{padding:36px;overflow-y:auto}
+.pdp-close{position:absolute;top:16px;right:16px;background:var(--dark);border:1px solid var(--border);color:var(--grey);width:36px;height:36px;border-radius:50%;font-size:16px;display:flex;align-items:center;justify-content:center;cursor:pointer;transition:color .2s,border-color .2s;z-index:10}
+.pdp-close:hover{color:var(--white);border-color:var(--white)}
+.pdp-modal-wrap{position:relative;width:100%;max-width:980px}
+.pdp-series-tag{font-family:var(--ff-head);font-size:10px;font-weight:700;letter-spacing:.22em;text-transform:uppercase;color:var(--accent);margin-bottom:6px}
+.pdp-title{font-family:var(--ff-head);font-size:clamp(28px,3vw,38px);font-weight:900;text-transform:uppercase;line-height:1;margin-bottom:4px}
+.pdp-colorway{font-size:14px;color:var(--grey);margin-bottom:14px}
+.pdp-tagline{font-family:var(--ff-head);font-size:13px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--accent);margin-bottom:18px;padding-bottom:18px;border-bottom:1px solid var(--border)}
+.pdp-full-desc{font-size:14px;color:var(--grey);line-height:1.8;margin-bottom:24px;font-weight:300}
+.pdp-feature{margin-bottom:18px;padding:16px;border:1px solid var(--border);border-radius:var(--r);transition:border-color .2s}
+.pdp-feature:hover{border-color:rgba(0,229,255,.3)}
+.pdp-feature-title{font-family:var(--ff-head);font-size:14px;font-weight:900;text-transform:uppercase;letter-spacing:.06em;color:var(--white);margin-bottom:6px}
+.pdp-feature-body{font-size:13px;color:var(--grey);line-height:1.7;font-weight:300}
+.pdp-specs{margin:22px 0;padding:18px;background:var(--dark);border-radius:var(--r)}
+.pdp-specs h4{font-family:var(--ff-head);font-size:11px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--grey);margin-bottom:12px}
+.pdp-spec-row{display:flex;justify-content:space-between;align-items:center;padding:8px 0;border-bottom:1px solid var(--border);font-size:13px}
+.pdp-spec-row:last-child{border-bottom:none}
+.pdp-spec-key{color:var(--grey);font-weight:300}
+.pdp-spec-val{font-family:var(--ff-head);font-weight:700;font-size:14px;color:var(--white);text-align:right}
+.pdp-price-row{display:flex;align-items:center;gap:12px;margin-bottom:16px}
+.pdp-price{font-family:var(--ff-head);font-size:36px;font-weight:900;color:var(--white)}
+.pdp-was{font-family:var(--ff-head);font-size:18px;font-weight:300;color:var(--grey);text-decoration:line-through}
+.pdp-save{background:var(--accent2);color:var(--white);font-family:var(--ff-head);font-size:11px;font-weight:900;letter-spacing:.1em;text-transform:uppercase;padding:4px 10px;border-radius:2px}
+.pdp-atc{width:100%;background:var(--accent);color:var(--black);padding:17px;font-family:var(--ff-head);font-size:15px;font-weight:900;letter-spacing:.14em;text-transform:uppercase;border-radius:var(--r);transition:background .2s,transform .2s;border:none;cursor:pointer;margin-bottom:10px}
+.pdp-atc:hover{background:#33ecff;transform:translateY(-1px)}
+.pdp-note{font-size:12px;color:var(--grey);text-align:center;display:flex;align-items:center;justify-content:center;gap:8px}
+.pdp-note span{color:var(--accent)}
+@media(max-width:768px){
+  .pdp-modal{grid-template-columns:1fr}
+  .pdp-imgs{position:relative;min-height:280px}
+  .pdp-main-img{min-height:260px}
+}
+</style>
+</head>
+<body>
+
+<!-- ANN BAR -->
+<div class="ann-bar">🔥 Pro Tour — 20% Off &nbsp;·&nbsp; Free Shipping Over $200 &nbsp;·&nbsp; USA Pickleball Approved</div>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-inner">
+    <a href="#home" class="nav-logo">Takumi<span>.</span></a>
+    <ul class="nav-links">
+      <li><a href="#home">Home</a></li>
+      <li><a href="#products">Shop</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#blog">Journal</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+    <div class="nav-right">
+      <button class="cart-btn" onclick="openCart()">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 01-8 0"/></svg>
+        Cart <div class="cart-count" id="cartCount">0</div>
+      </button>
+      <button class="hamburger" id="ham" onclick="toggleMenu()"><span></span><span></span><span></span></button>
+    </div>
+  </div>
+</nav>
+
+<!-- MOBILE MENU -->
+<div class="mob-menu" id="mobMenu">
+  <a href="#home"     onclick="closeMenu()">Home</a>
+  <a href="#products" onclick="closeMenu()">Shop</a>
+  <a href="#about"    onclick="closeMenu()">About</a>
+  <a href="#blog"     onclick="closeMenu()">Journal</a>
+  <a href="#contact"  onclick="closeMenu()">Contact</a>
+</div>
+
+<!-- CART OVERLAY -->
+<div class="cart-overlay" id="cartOverlay" onclick="closeCart()"></div>
+
+<!-- CART DRAWER -->
+<div class="cart-drawer" id="cartDrawer">
+  <div class="cart-hdr">
+    <h2>Your Cart <em id="cartHdrCount">(0)</em></h2>
+    <button class="cart-close-btn" onclick="closeCart()">✕</button>
+  </div>
+  <div class="cart-body" id="cartBody">
+    <div class="cart-empty-state" id="cartEmpty">
+      <svg width="44" height="44" viewBox="0 0 24 24" fill="none" stroke="#333" stroke-width="1.5"><path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 01-8 0"/></svg>
+      <p>Cart is empty</p>
+      <span>Add a paddle to get started</span>
+    </div>
+    <div id="cartItems"></div>
+  </div>
+  <div class="cart-ftr" id="cartFtr" style="display:none">
+    <div class="ship-bar">
+      <div class="ship-bar-lbl">
+        <span>Free shipping progress</span>
+        <span id="shipLbl" class="accent">Add $200 more</span>
+      </div>
+      <div class="ship-track"><div class="ship-fill" id="shipFill" style="width:0%"></div></div>
+    </div>
+    <div class="promo-row">
+      <input type="text" placeholder="Promo code (try TAKUMI10)" id="promoInput"/>
+      <button onclick="applyPromo()">Apply</button>
+    </div>
+    <div class="cart-subtotal-row">
+      <span>Subtotal</span>
+      <strong id="cartTotal">$0.00</strong>
+    </div>
+    <div class="ship-note" id="shipNote">Add <span id="shipLeft">$200</span> more for <span>free shipping</span></div>
+    <button class="checkout-btn" onclick="openCheckout()">Checkout →</button>
+    <button class="keep-btn" onclick="closeCart()">Continue Shopping</button>
+  </div>
+</div>
+
+<!-- CHECKOUT MODAL -->
+<div class="co-overlay" id="coOverlay">
+  <div class="co-modal">
+    <div class="co-modal-hdr">
+      <h2>Checkout</h2>
+      <button class="co-modal-close" onclick="closeCheckout()">✕</button>
+    </div>
+    <div id="coBody" class="co-body">
+      <div class="co-summary">
+        <h3>Order Summary</h3>
+        <div id="coItems"></div>
+        <div class="co-grand"><span>Total</span><strong id="coTotal">$0.00</strong></div>
+      </div>
+      <div class="sect-title">Contact & Shipping</div>
+      <div class="row2">
+        <div class="fg2"><label>First Name</label><input type="text" placeholder="Alex" id="co_fn"/></div>
+        <div class="fg2"><label>Last Name</label><input type="text" placeholder="Smith" id="co_ln"/></div>
+      </div>
+      <div class="fg2"><label>Email</label><input type="email" placeholder="alex@email.com" id="co_em"/></div>
+      <div class="fg2"><label>Phone</label><input type="tel" placeholder="+61 4xx xxx xxx"/></div>
+      <div class="fg2"><label>Street Address</label><input type="text" placeholder="123 Main Street"/></div>
+      <div class="row2">
+        <div class="fg2"><label>City</label><input type="text" placeholder="Sydney"/></div>
+        <div class="fg2"><label>State</label>
+          <select><option value="">Select...</option><option>NSW</option><option>VIC</option><option>QLD</option><option>WA</option><option>SA</option><option>TAS</option><option>ACT</option><option>NT</option></select>
+        </div>
+      </div>
+      <div class="fg2"><label>Postcode</label><input type="text" placeholder="2000" style="max-width:130px"/></div>
+      <div class="sect-title">Payment</div>
+      <div class="pay-methods">
+        <div class="pay-badge">VISA</div>
+        <div class="pay-badge">Mastercard</div>
+        <div class="pay-badge">Amex</div>
+        <div class="pay-badge">PayPal</div>
+        <div class="pay-badge">Afterpay</div>
+      </div>
+      <div class="fg2"><label>Card Number</label><input type="text" placeholder="•••• •••• •••• ••••" id="co_card" maxlength="19" oninput="fmtCard(this)"/></div>
+      <div class="row2">
+        <div class="fg2"><label>Expiry</label><input type="text" placeholder="MM / YY" maxlength="7" oninput="fmtExp(this)"/></div>
+        <div class="fg2"><label>CVV</label><input type="text" placeholder="•••" maxlength="4"/></div>
+      </div>
+      <div class="fg2"><label>Name on Card</label><input type="text" placeholder="Alex Smith"/></div>
+      <button class="place-btn" onclick="placeOrder()">Place Order — <span id="coTotalBtn">$0.00</span></button>
+    </div>
+    <div class="order-done" id="orderDone">
+      <div class="done-circle">✓</div>
+      <h2>Order Placed!</h2>
+      <p>Thanks for your order! A confirmation and tracking details will be sent to your email within a few minutes.</p>
+      <div class="order-ref" id="orderRef"></div>
+    </div>
+  </div>
+</div>
+
+<!-- HERO -->
+<section id="home">
+  <div class="h-grid"></div>
+  <div class="h-glow"></div>
+  <div class="container">
+    <div class="h-content">
+      <div class="h-tag"><div class="h-dot"></div><span>Official Osaka World AU Retailer — Ships Locally</span></div>
+      <h1 class="h-title">
+        <span class="stroke">Your</span><br>
+        <span class="accent-w">Game.</span><br>
+        Elevated.
+      </h1>
+      <p class="h-sub">Premium Osaka World pickleball paddles — thermoformed carbon technology, USA approved, shipped fast across Australia with no import fees.</p>
+      <div class="h-btns">
+        <a href="#products" class="btn-p">Shop Now <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+        <a href="#about" class="btn-g">Our Story</a>
+      </div>
+      <div class="h-stats">
+        <div><div class="h-stat-n">5+</div><div class="h-stat-l">Paddle Models</div></div>
+        <div><div class="h-stat-n">AU</div><div class="h-stat-l">Local Warranty</div></div>
+        <div><div class="h-stat-n">USA</div><div class="h-stat-l">Pickleball Approved</div></div>
+        <div><div class="h-stat-n">2–5</div><div class="h-stat-l">Day Delivery</div></div>
+      </div>
+    </div>
+  </div>
+  <div class="h-scroll"><span>Scroll</span><div class="h-arr"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12l7 7 7-7"/></svg></div></div>
+</section>
+
+<!-- TRUST BAR -->
+<div class="trust-bar"><div class="t-track" id="tTrack"></div></div>
+
+<!-- PRODUCTS -->
+<section id="products">
+  <div class="container">
+    <div class="section-hdr fade-up">
+      <div class="tag">Collection</div>
+      <h2>Shop Osaka<br>Paddles</h2>
+      <div class="a-line"></div>
+    </div>
+  </div>
+  <div style="padding:0 32px;max-width:1280px;margin:0 auto">
+    <div class="p-grid" id="prodGrid"></div>
+  </div>
+</section>
+
+<!-- FEATURE STRIP -->
+<div class="fstrip">
+  <div style="max-width:1280px;margin:0 auto;padding:0 32px">
+    <div class="fstrip-inner">
+      <div class="fs-item"><div class="fs-icon">🚚</div><div><div class="fs-title">Ships From Australia</div><div class="fs-desc">No customs delays, no hidden import fees. Free shipping on orders over $200 Australia-wide.</div></div></div>
+      <div class="fs-item"><div class="fs-icon">🛡</div><div><div class="fs-title">Australian Warranty</div><div class="fs-desc">Full Australian consumer warranty on every paddle. Real support from real players who care.</div></div></div>
+      <div class="fs-item"><div class="fs-icon">🏆</div><div><div class="fs-title">USA Pickleball Approved</div><div class="fs-desc">Every Pro Tour paddle meets official USA Pickleball Association tournament standards.</div></div></div>
+    </div>
+  </div>
+</div>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="container">
+    <div class="ab-split">
+      <div class="ab-left fade-up">
+        <div class="tag">About Takumi</div>
+        <h2 style="font-family:var(--ff-head);font-size:clamp(44px,6vw,68px);font-weight:900;text-transform:uppercase;line-height:.95;letter-spacing:-.01em;margin:10px 0 20px">Built by<br>Players.<br><span style="color:var(--accent)">For Players.</span></h2>
+        <div class="a-line" style="margin-bottom:28px"></div>
+        <p>Takumi Sports was born from a simple frustration: buying premium pickleball gear in Australia meant long waits, eye-watering import fees, and zero local support when things went wrong.</p>
+        <p>We partnered directly with Osaka World to bring you authentic, top-tier paddles shipped locally — with real warranty support from people who actually play the game.</p>
+        <p>Takumi (匠) is a Japanese word for artisan or master craftsperson. It's the standard we hold every product to, and the experience we aim to deliver to every customer.</p>
+        <a href="#products" class="btn-p" style="margin-top:28px;display:inline-flex">Shop the Range <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+      </div>
+      <div class="ab-right fade-up" style="transition-delay:.15s">
+        <div class="ab-stat"><div class="ab-stat-n">18<span>K</span></div><div class="ab-stat-d">Textreme Carbon on Pro Tour LTD — same material used in F1 and aerospace engineering</div></div>
+        <div class="ab-stat"><div class="ab-stat-n">T<span>700</span></div><div class="ab-stat-d">Toray Carbon fibre on the Kazoku &amp; Pro Tour Standard series for elite control</div></div>
+        <div class="ab-stat"><div class="ab-stat-n">100<span>%</span></div><div class="ab-stat-d">Authentic Osaka World product — zero grey imports, official Australian retailer</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section id="testimonials">
+  <div class="container">
+    <div class="section-hdr fade-up">
+      <div class="tag">Reviews</div>
+      <h2>What Players<br>Are Saying</h2>
+      <div class="a-line"></div>
+    </div>
+  </div>
+  <div style="padding:0 32px;max-width:1280px;margin:0 auto">
+    <div class="tst-grid">
+      <div class="tst-card fade-up" style="transition-delay:.05s">
+        <div class="tst-stars"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
+        <div class="tst-quote">"The Pro Tour LTD is genuinely in another league. The spin I get off the Textreme carbon face is incredible. Shipped in 2 days, arrived perfectly packed."</div>
+        <div class="tst-div"></div>
+        <div class="tst-name">James T.</div><div class="tst-loc">Sydney, NSW</div>
+      </div>
+      <div class="tst-card fade-up" style="transition-delay:.1s">
+        <div class="tst-stars"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
+        <div class="tst-quote">"Bought the Kazoku bundle for my partner and me. Perfect for recreational play — and the 25% bundle deal is unbeatable. Arrived in 3 days!"</div>
+        <div class="tst-div"></div>
+        <div class="tst-name">Mark &amp; Sarah L.</div><div class="tst-loc">Melbourne, VIC</div>
+      </div>
+      <div class="tst-card fade-up" style="transition-delay:.15s">
+        <div class="tst-stars"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
+        <div class="tst-quote">"Finally a local source for Osaka paddles. No import fees, legit warranty, and the team knows what they're talking about. Won't buy anywhere else."</div>
+        <div class="tst-div"></div>
+        <div class="tst-name">Amelia R.</div><div class="tst-loc">Brisbane, QLD</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- BLOG -->
+<section id="blog">
+  <div class="container">
+    <div class="section-hdr fade-up">
+      <div class="tag">Knowledge</div>
+      <h2>The Takumi<br>Journal</h2>
+      <div class="a-line"></div>
+    </div>
+  </div>
+  <div style="padding:0 32px;max-width:1280px;margin:0 auto">
+    <div class="bl-grid">
+      <div class="bl-card fade-up" style="transition-delay:.05s">
+        <div class="bl-img">❄️🔥<div class="bl-cat">Technology</div></div>
+        <div class="bl-body">
+          <div class="bl-date">Nov 12, 2025</div>
+          <div class="bl-title">Cold Press vs Thermoformed</div>
+          <div class="bl-exc">The way your paddle is built completely changes how it performs. We break down the key differences between cold press and thermoformed construction.</div>
+          <span class="bl-read">Read Article <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
+        </div>
+      </div>
+      <div class="bl-card fade-up" style="transition-delay:.1s">
+        <div class="bl-img">🏆⚡<div class="bl-cat">Comparison</div></div>
+        <div class="bl-body">
+          <div class="bl-date">Nov 6, 2025</div>
+          <div class="bl-title">Pro Tour vs Pro Tour LTD</div>
+          <div class="bl-exc">Both paddles sit at the pinnacle of performance, but they're built for different players. Here's how to choose the right one for your game.</div>
+          <span class="bl-read">Read Article <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
+        </div>
+      </div>
+      <div class="bl-card fade-up" style="transition-delay:.15s">
+        <div class="bl-img">🎯✨<div class="bl-cat">Deep Dive</div></div>
+        <div class="bl-body">
+          <div class="bl-date">Nov 4, 2025</div>
+          <div class="bl-title">Osaka Pro Tour LTD — Full Review</div>
+          <div class="bl-exc">The 45° rotated 18K Textreme carbon delivers smoother power and elite consistency. We put it through its paces on and off the court.</div>
+          <span class="bl-read">Read Article <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="container">
+    <div class="ct-split">
+      <div class="ct-left fade-up">
+        <div class="tag">Get in Touch</div>
+        <h2 style="font-family:var(--ff-head);font-size:clamp(44px,5vw,64px);font-weight:900;text-transform:uppercase;line-height:.95;letter-spacing:-.01em;margin-top:10px">Let's<br>Talk.</h2>
+        <p>Questions about which paddle suits your game? Interested in wholesale or community pricing? We reply within 24 hours.</p>
+        <div class="ct-detail"><div class="ct-icon">📧</div><div><span class="ct-strong">Email</span><span class="ct-val"><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="c0a8a5acacaf80b4a1abb5ada9b3b0afb2b4b3eea3afadeea1b5">[email&#160;protected]</a></span></div></div>
+        <div class="ct-detail"><div class="ct-icon">📍</div><div><span class="ct-strong">Location</span><span class="ct-val">Ships Australia-Wide</span></div></div>
+        <div class="ct-detail"><div class="ct-icon">⚡</div><div><span class="ct-strong">Response Time</span><span class="ct-val">Within 24 hours</span></div></div>
+        <div class="soc-row">
+          <a href="https://www.instagram.com/takumisports.au/" target="_blank" class="soc-btn">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+          </a>
+          <a href="https://takumisports.com.au/" target="_blank" class="soc-btn">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z"/></svg>
+          </a>
+        </div>
+      </div>
+      <div class="ct-form fade-up" style="transition-delay:.2s">
+        <div class="ct-form-ttl">Send a Message</div>
+        <form id="ctForm" onsubmit="submitContact(event)">
+          <div class="cf-row">
+            <div class="cf-g"><label>First Name</label><input type="text" placeholder="Alex" required/></div>
+            <div class="cf-g"><label>Last Name</label><input type="text" placeholder="Smith" required/></div>
+          </div>
+          <div class="cf-g"><label>Email</label><input type="email" placeholder="alex@email.com" required/></div>
+          <div class="cf-g"><label>Topic</label>
+            <select><option value="">Select a topic...</option><option>Product Question</option><option>Order / Shipping</option><option>Warranty Claim</option><option>Wholesale / Community</option><option>Other</option></select>
+          </div>
+          <div class="cf-g"><label>Message</label><textarea placeholder="Tell us how we can help..."></textarea></div>
+          <button type="submit" class="cf-sub">Send Message →</button>
+        </form>
+        <div class="cf-done" id="cfDone">
+          <div class="cf-done-ico">✓</div>
+          <h3>Message Sent!</h3>
+          <p>We'll get back to you within 24 hours.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- NEWSLETTER -->
+<div class="nl">
+  <div class="container">
+    <div class="nl-inner fade-up">
+      <div class="nl-left">
+        <h2>Stay <span>Ahead</span><br>of the Game.</h2>
+        <p>First access to new drops, exclusive offers, and insights from the Takumi team.</p>
+      </div>
+      <div>
+        <div class="nl-inc"><span>🎁</span><span>Get 10% off your first order when you subscribe</span></div>
+        <div class="nl-form">
+          <input type="email" placeholder="Your email address" id="nlEmail"/>
+          <button onclick="subNl()">Get 10% Off</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="container">
+    <div class="ft-top">
+      <div class="ft-brand">
+        <div class="logo">Takumi<span>.</span></div>
+        <p>Australia's home for premium Osaka World pickleball paddles. Authentic gear, local shipping, real support.</p>
+      </div>
+      <div class="ft-col"><h4>Shop</h4><ul><li><a href="#products">Kazoku Series</a></li><li><a href="#products">Pro Tour Series</a></li><li><a href="#products">Pro Tour LTD</a></li><li><a href="#products">Bundle Deals</a></li></ul></div>
+      <div class="ft-col"><h4>Company</h4><ul><li><a href="#about">About Us</a></li><li><a href="#blog">Journal</a></li><li><a href="#contact">Contact</a></li><li><a href="https://www.instagram.com/takumisports.au/" target="_blank">Instagram</a></li></ul></div>
+      <div class="ft-col"><h4>Support</h4><ul><li><a href="#contact">Warranty</a></li><li><a href="#contact">Shipping Policy</a></li><li><a href="#contact">Returns</a></li><li><a href="#contact">FAQ</a></li></ul></div>
+    </div>
+    <div class="ft-bot">
+      <div class="ft-copy">© 2026 Takumi Sports Australia. All rights reserved.</div>
+      <div class="ft-legal"><a href="#">Privacy Policy</a><a href="#">Terms of Service</a><a href="#">Refund Policy</a></div>
+    </div>
+  </div>
+</footer>
+
+
+<!-- PDP MODAL -->
+<div class="pdp-overlay" id="pdpOverlay" onclick="closePDPOverlay(event)">
+  <div class="pdp-modal-wrap">
+    <button class="pdp-close" onclick="closePDP()">✕</button>
+    <div class="pdp-modal" id="pdpModal">
+      <div class="pdp-imgs">
+        <div class="pdp-main-img"><img id="pdpMainImg" src="" alt=""/></div>
+        <div class="pdp-thumbs" id="pdpThumbs"></div>
+      </div>
+      <div class="pdp-info" id="pdpInfo"></div>
+    </div>
+  </div>
+</div>
+<div class="toast" id="toast"></div>
+
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+/* ─── PRODUCTS DATA ─── */
+const PRODS=[
+  {
+    id:1,series:'Kazoku Series',name:'Kazoku Glass Fiber',colorway:'Aquatic Awe',
+    tagline:'Control • Comfort • Confidence',
+    shortDesc:'Designed for developing players who value precision and feel. Softer touch, easier control, forgiving glass fiber construction.',
+    fullDesc:'Designed for developing players who value precision and feel, the Osaka Kazoku Glass Fiber Paddle is built to help you play smoother, longer, and more confidently. With its forgiving glass fiber construction, the Kazoku provides a softer touch and easier control — perfect for players refining their skills and consistency on court.',
+    features:[
+      {title:'Smooth Power & Forgiving Feel',body:'The Glass Fiber Face delivers dependable power with a comfortable, arm-friendly response. Its flexible surface absorbs impact effectively, reducing vibration and fatigue during long matches while maintaining a consistent feel.'},
+      {title:'Effortless Control',body:'At its heart lies the Responsive Honeycomb Core, engineered for stability and accuracy across the entire paddle face. Whether you\'re executing soft dinks at the kitchen line or driving from the baseline, the Kazoku gives you confidence with every swing.'},
+      {title:'Thermoformed Performance Boost',body:'Using the same advanced construction found in Osaka\'s performance paddles, the Thermoformed Performance Boost fuses the face and core into a seamless structure — enhancing energy transfer for more efficient, powerful shots and reinforcing long-term durability.'},
+    ],
+    specs:{Construction:'Glass Fiber',Core:'Responsive Honeycomb Core',Technology:'Thermoformed Performance Boost',Size:'16″ × 8″','Handle Length':'5.3″',Thickness:'13mm',Weight:'8.0 oz'},
+    price:158,was:210,badge:'Bundle Deal',bt:'bundle',
+    imgs:[
+      'https://takumisports.com.au/cdn/shop/files/Kazoku_Pickleball_Racket_Aquatic_Awe1.jpg?v=1760881822',
+      'https://takumisports.com.au/cdn/shop/files/Kazoku_Pickleball_Racket_Aquatic_Awe2.jpg?v=1760881822',
+      'https://takumisports.com.au/cdn/shop/files/Kazoku_Pickleball_Racket_Aquatic_Awe3.jpg?v=1760881822',
+    ]
+  },
+  {
+    id:2,series:'Kazoku Series',name:'Kazoku Glass Fiber',colorway:'Future Dusk',
+    tagline:'Control • Comfort • Confidence',
+    shortDesc:'Designed for developing players who value precision and feel. Softer touch, easier control, forgiving glass fiber construction.',
+    fullDesc:'Designed for developing players who value precision and feel, the Osaka Kazoku Glass Fiber Paddle is built to help you play smoother, longer, and more confidently. With its forgiving glass fiber construction, the Kazoku provides a softer touch and easier control — perfect for players refining their skills and consistency on court.',
+    features:[
+      {title:'Smooth Power & Forgiving Feel',body:'The Glass Fiber Face delivers dependable power with a comfortable, arm-friendly response. Its flexible surface absorbs impact effectively, reducing vibration and fatigue during long matches.'},
+      {title:'Effortless Control',body:'At its heart lies the Responsive Honeycomb Core, engineered for stability and accuracy across the entire paddle face. From soft dinks to baseline drives, the Kazoku gives you confidence with every swing.'},
+      {title:'Thermoformed Performance Boost',body:'The Thermoformed Performance Boost fuses the face and core into a seamless structure — enhancing energy transfer for more efficient shots and reinforcing long-term durability.'},
+    ],
+    specs:{Construction:'Glass Fiber',Core:'Responsive Honeycomb Core',Technology:'Thermoformed Performance Boost',Size:'16″ × 8″','Handle Length':'5.3″',Thickness:'13mm',Weight:'8.0 oz'},
+    price:158,was:210,badge:'Bundle Deal',bt:'bundle',
+    imgs:[
+      'https://takumisports.com.au/cdn/shop/files/Kazoku_Pickleball_Racket_Future_Dusk2.jpg?v=1760864214',
+      'https://takumisports.com.au/cdn/shop/files/Kazoku_Pickleball_Racket_Future_Dusk1.jpg?v=1760864214',
+      'https://takumisports.com.au/cdn/shop/files/Kazoku_Pickleball_Racket_Future_Dusk3.jpg?v=1760864214',
+    ]
+  },
+  {
+    id:3,series:'Kazoku Series',name:'Kazoku Glass Fiber',colorway:'Iconic White',
+    tagline:'Control • Comfort • Confidence',
+    shortDesc:'Designed for developing players who value precision and feel. Softer touch, easier control, forgiving glass fiber construction.',
+    fullDesc:'Designed for developing players who value precision and feel, the Osaka Kazoku Glass Fiber Paddle is built to help you play smoother, longer, and more confidently. With its forgiving glass fiber construction, the Kazoku provides a softer touch and easier control — perfect for players refining their skills and consistency on court.',
+    features:[
+      {title:'Smooth Power & Forgiving Feel',body:'The Glass Fiber Face delivers dependable power with a comfortable, arm-friendly response. Its flexible surface absorbs impact effectively, reducing vibration and fatigue during long matches.'},
+      {title:'Effortless Control',body:'The Responsive Honeycomb Core ensures stability and accuracy across the entire paddle face. From dinks at the kitchen to baseline drives, the Kazoku gives you confidence with every swing.'},
+      {title:'Thermoformed Performance Boost',body:'The Thermoformed Performance Boost fuses the face and core into a seamless structure — enhancing energy transfer for more efficient shots and reinforcing long-term durability.'},
+    ],
+    specs:{Construction:'Glass Fiber',Core:'Responsive Honeycomb Core',Technology:'Thermoformed Performance Boost',Size:'16″ × 8″','Handle Length':'5.3″',Thickness:'13mm',Weight:'8.0 oz'},
+    price:158,was:210,badge:'Bundle Deal',bt:'bundle',
+    imgs:[
+      'https://takumisports.com.au/cdn/shop/files/KazokuWhite1.jpg?v=1760880765',
+      'https://takumisports.com.au/cdn/shop/files/KazokuWhite3.webp?v=1760880765',
+      'https://takumisports.com.au/cdn/shop/files/KazokuWhite5.webp?v=1760880765',
+    ]
+  },
+  {
+    id:4,series:'Pro Tour Series',name:'Pro Tour T700 SC',colorway:'Iconic Black',
+    tagline:'Power • Control • Precision',
+    shortDesc:'Engineered for players seeking the perfect balance between control and explosiveness. Premium T700 SC Toray Carbon for world-class performance.',
+    fullDesc:'Engineered for players seeking a perfect balance between control and explosiveness, the Osaka Pro Tour T700 SC Toray Carbon Paddle delivers world-class performance for those ready to elevate their game. Made with premium T700 SC Toray Carbon, it offers a crisp, responsive feel with exceptional spin and durability.',
+    features:[
+      {title:'Unmatched Construction',body:'The T700 SC Toray Carbon Face provides superior stiffness and consistency for a solid, connected feel. Each strike responds cleanly — delivering feedback that lets you command every rally.'},
+      {title:'Effortless Control',body:'At its core, the Responsive Honeycomb Polymer adapts to your playing style. Whether you\'re dropping touch shots or driving through the baseline, it provides smooth, stable energy transfer for pinpoint accuracy.'},
+      {title:'Thermoformed Performance Boost',body:'The Thermoformed frame technology unifies the paddle face and core for superior durability and power transfer — producing a more solid, stable feel and long-lasting performance under pressure.'},
+      {title:'Enhanced Spin & Feel',body:'The Carbon Friction Face features advanced nylon ply peel texture, gripping the ball longer to generate superior spin and precise shot placement.'},
+    ],
+    specs:{Construction:'T700 SC Toray Carbon',Core:'Responsive Honeycomb Core',Technology:'Thermoformed Performance',Surface:'Carbon Friction Face',Size:'16.3″ × 7.25″','Handle Length':'5.7″',Thickness:'16mm',Weight:'8.3 oz','Swing Weight':'114–117 kg·cm²'},
+    price:338,was:420,badge:'20% Off',bt:'sale',
+    imgs:[
+      'https://takumisports.com.au/cdn/shop/files/PCK00007_9013_1_Pro_Tour_Pickleball_Racket_Iconic_Black.jpg?v=1762355461',
+      'https://takumisports.com.au/cdn/shop/files/PCK00007_9013_2_Pro_Tour_Pickleball_Racket_Iconic_Black.jpg?v=1762355461',
+      'https://takumisports.com.au/cdn/shop/files/PCK00007_9013_3_Pro_Tour_Pickleball_Racket_Iconic_Black.jpg?v=1762355462',
+    ]
+  },
+  {
+    id:5,series:'Pro Tour LTD Series',name:'Pro Tour LTD 18K',colorway:'Iconic Black',
+    tagline:'Unmatched Precision • Unrivalled Power • Ultimate Control',
+    shortDesc:'Built for elite players who demand the very best. Crafted with 45° Rotated 18K Textreme Carbon for complete command over every rally.',
+    fullDesc:'Built for elite players who demand the very best, the Osaka Pro Tour LTD represents the pinnacle of performance. Crafted with 45° Rotated 18K Textreme Carbon, this paddle delivers extraordinary stability, control, and feel — giving you complete command over every rally.',
+    features:[
+      {title:'Explosive Power & Stability',body:'The 18K Textreme Carbon Face provides a smoother, more stable surface than traditional carbon weaves. Its 45° fiber orientation enhances both stiffness and flexibility, giving you explosive power on drives and precision on delicate shots.'},
+      {title:'Effortless Control',body:'The Responsive Honeycomb Core ensures reliable feedback and consistency across the entire paddle face. From quick volleys at the kitchen to deep baseline rallies, every hit feels controlled and intentional.'},
+      {title:'Thermoformed Performance Boost',body:'Through Osaka\'s Thermoformed construction, the face and core are fused into a single, seamless body — increasing energy transfer and structural integrity for a crisp, connected response and incredible durability.'},
+      {title:'Carbon Friction Face',body:'The Carbon Friction Face, refined with premium nylon ply peel technology, grips the ball longer for maximum spin and placement precision — giving you the tactical advantage in every exchange.'},
+    ],
+    specs:{Construction:'45° Rotated 18K Textreme Carbon',Core:'Responsive Honeycomb Core',Technology:'Thermoformed Performance',Surface:'Carbon Friction Face',Size:'16.3″ × 7.25″','Handle Length':'5.7″',Thickness:'16mm',Weight:'8.3 oz','Swing Weight':'114–117 kg·cm²'},
+    price:388,was:485,badge:'20% Off',bt:'sale',
+    imgs:[
+      'https://takumisports.com.au/cdn/shop/files/ProTourLTD.jpg?v=1761195668',
+      'https://takumisports.com.au/cdn/shop/files/ProTourLTD2.jpg?v=1761195668',
+      'https://takumisports.com.au/cdn/shop/files/ProTourLTD3.jpg?v=1761195668',
+    ]
+  },
+];
+
+/* ─── CART ─── */
+let cart=[];
+
+function renderProds(){
+  document.getElementById('prodGrid').innerHTML=PRODS.map(p=>`
+    <div class="p-card fade-up" onclick="openPDP(${p.id})" style="cursor:pointer">
+      <div class="p-img">
+        <img src="${p.imgs[0]}" alt="${p.name}" loading="lazy"/>
+        <div class="p-bdg ${p.bt}">${p.badge}</div>
+      </div>
+      <div class="p-body">
+        <div class="p-series">${p.series}</div>
+        <div class="p-name">${p.name} <span style="color:var(--grey);font-size:15px;font-weight:400;text-transform:none;font-family:var(--ff-body)">— ${p.colorway}</span></div>
+        <div class="p-desc">${p.shortDesc}</div>
+        <div class="p-foot">
+          <div class="p-price"><span class="was">$${p.was}</span>$${p.price}</div>
+          <div style="display:flex;gap:8px" onclick="event.stopPropagation()">
+            <button class="atc" style="background:transparent;color:var(--accent);border:1px solid var(--accent)" onclick="openPDP(${p.id})">Details</button>
+            <button class="atc" onclick="addToCart(${p.id})">Add to Cart</button>
+          </div>
+        </div>
+      </div>
+    </div>`).join('');
+  document.querySelectorAll('.fade-up:not(.vis)').forEach(el=>obs.observe(el));
+}
+
+function buildTrust(){
+  const items=['📦 Free Shipping Over $200','🇦🇺 Ships From Australia','🛡 Australian Warranty','🏆 USA Pickleball Approved','↩ Easy Returns','⚡ 2–5 Day Delivery','💳 Secure Checkout','🎁 Bundle Deals Available'];
+  const all=[...items,...items];
+  document.getElementById('tTrack').innerHTML=all.map(t=>`<div class="t-item"><div class="t-item-dot"></div>${t}</div>`).join('');
+}
+
+function addToCart(id){
+  const p=PRODS.find(x=>x.id===id);
+  const ex=cart.find(x=>x.id===id);
+  if(ex) ex.qty++;
+  else cart.push({...p,qty:1});
+  refreshCart();
+  openCart();
+  toast(`✓ Added: ${p.name.split('—')[1]?.trim()||p.name}`);
+  const cc=document.getElementById('cartCount');
+  cc.classList.add('pop');
+  setTimeout(()=>cc.classList.remove('pop'),300);
+}
+
+function rmItem(id){cart=cart.filter(x=>x.id!==id);refreshCart()}
+function chQty(id,d){
+  const i=cart.find(x=>x.id===id);
+  if(!i)return;
+  i.qty+=d;
+  if(i.qty<=0) rmItem(id); else refreshCart();
+}
+
+function getTotal(){return cart.reduce((s,i)=>s+i.price*i.qty,0)}
+
+function refreshCart(){
+  const total=getTotal();
+  const count=cart.reduce((s,i)=>s+i.qty,0);
+  document.getElementById('cartCount').textContent=count;
+  document.getElementById('cartHdrCount').textContent=`(${count})`;
+  const empty=document.getElementById('cartEmpty');
+  const items=document.getElementById('cartItems');
+  const ftr=document.getElementById('cartFtr');
+  if(cart.length===0){empty.style.display='block';items.innerHTML='';ftr.style.display='none';return}
+  empty.style.display='none';
+  ftr.style.display='block';
+  items.innerHTML=cart.map(i=>`
+    <div class="c-item">
+      <div class="c-item-img"><img src="${i.img}" alt="${i.name}" loading="lazy"/></div>
+      <div class="c-item-info">
+        <div class="c-item-series">${i.series}</div>
+        <div class="c-item-name">${i.name.replace('—','').trim()}</div>
+        <div class="c-item-bottom">
+          <div class="c-item-price">$${(i.price*i.qty).toFixed(2)}</div>
+          <div class="qty-ctrl">
+            <button class="qty-btn" onclick="chQty(${i.id},-1)">−</button>
+            <span class="qty-v">${i.qty}</span>
+            <button class="qty-btn" onclick="chQty(${i.id},1)">+</button>
+          </div>
+        </div>
+      </div>
+      <button class="c-item-del" onclick="rmItem(${i.id})">✕</button>
+    </div>`).join('');
+  document.getElementById('cartTotal').textContent=`$${total.toFixed(2)}`;
+  const left=Math.max(200-total,0);
+  const pct=Math.min(total/200*100,100);
+  document.getElementById('shipFill').style.width=pct+'%';
+  if(left>0){
+    document.getElementById('shipLbl').textContent=`Add $${left.toFixed(0)} more`;
+    document.getElementById('shipLeft').textContent=`$${left.toFixed(0)}`;
+    document.getElementById('shipNote').style.display='block';
+  } else {
+    document.getElementById('shipLbl').textContent='Free shipping unlocked! 🎉';
+    document.getElementById('shipNote').style.display='none';
+  }
+}
+
+function openCart(){document.getElementById('cartOverlay').classList.add('open');document.getElementById('cartDrawer').classList.add('open');document.body.style.overflow='hidden'}
+function closeCart(){document.getElementById('cartOverlay').classList.remove('open');document.getElementById('cartDrawer').classList.remove('open');document.body.style.overflow=''}
+
+function applyPromo(){
+  const v=document.getElementById('promoInput').value.trim().toUpperCase();
+  if(v==='TAKUMI10') toast('🎉 10% discount applied!');
+  else if(v==='FREESHIP') toast('🚚 Free shipping applied!');
+  else toast('❌ Invalid promo code');
+}
+
+/* ─── CHECKOUT ─── */
+function openCheckout(){
+  if(!cart.length){toast('Your cart is empty!');return}
+  closeCart();
+  const total=getTotal();
+  const ship=total>=200?0:9.95;
+  const grand=total+ship;
+  document.getElementById('coItems').innerHTML=
+    cart.map(i=>`<div class="co-row"><span class="co-row-name">${i.name}</span><span class="co-row-qty">×${i.qty}</span><span class="co-row-price">$${(i.price*i.qty).toFixed(2)}</span></div>`).join('')+
+    `<div class="co-row"><span class="co-row-name" style="color:var(--grey)">Shipping</span><span class="co-row-qty"></span><span class="co-row-price" style="color:${ship===0?'var(--accent)':'var(--white)'}">${ship===0?'FREE':'$'+ship.toFixed(2)}</span></div>`;
+  document.getElementById('coTotal').textContent=`$${grand.toFixed(2)}`;
+  document.getElementById('coTotalBtn').textContent=`$${grand.toFixed(2)}`;
+  document.getElementById('coBody').style.display='block';
+  document.getElementById('orderDone').classList.remove('show');
+  document.getElementById('coOverlay').classList.add('open');
+  document.body.style.overflow='hidden';
+}
+function closeCheckout(){document.getElementById('coOverlay').classList.remove('open');document.body.style.overflow=''}
+
+function placeOrder(){
+  if(!document.getElementById('co_fn').value.trim()||!document.getElementById('co_em').value.trim()){toast('Please fill in your name and email');return}
+  const card=document.getElementById('co_card').value.replace(/\s/g,'');
+  if(!card||card.length<12){toast('Please enter a valid card number');return}
+  const ref='TS-'+Math.floor(100000+Math.random()*900000);
+  document.getElementById('orderRef').textContent=`Order Reference: ${ref}`;
+  document.getElementById('coBody').style.display='none';
+  document.getElementById('orderDone').classList.add('show');
+  cart=[];refreshCart();
+  toast('🎉 Order placed successfully!');
+}
+function fmtCard(el){let v=el.value.replace(/\D/g,'').substring(0,16);el.value=v.replace(/(.{4})/g,'$1 ').trim()}
+function fmtExp(el){let v=el.value.replace(/\D/g,'');if(v.length>2)v=v.substring(0,2)+' / '+v.substring(2,4);el.value=v}
+
+/* ─── CONTACT ─── */
+function submitContact(e){e.preventDefault();document.getElementById('ctForm').style.display='none';document.getElementById('cfDone').classList.add('show');toast('✓ Message sent!')}
+
+/* ─── NEWSLETTER ─── */
+function subNl(){
+  const e=document.getElementById('nlEmail').value;
+  if(!e||!e.includes('@')){toast('Please enter a valid email');return}
+  toast('🎁 Check your inbox for 10% off!');
+  document.getElementById('nlEmail').value='';
+}
+
+/* ─── MOBILE MENU ─── */
+function toggleMenu(){document.getElementById('ham').classList.toggle('open');document.getElementById('mobMenu').classList.toggle('open');document.body.style.overflow=document.getElementById('mobMenu').classList.contains('open')?'hidden':''}
+function closeMenu(){document.getElementById('ham').classList.remove('open');document.getElementById('mobMenu').classList.remove('open');document.body.style.overflow=''}
+
+/* ─── TOAST ─── */
+let toastT;
+function toast(msg){const t=document.getElementById('toast');t.textContent=msg;t.classList.add('show');clearTimeout(toastT);toastT=setTimeout(()=>t.classList.remove('show'),3000)}
+
+/* ─── SCROLL ANIMATION ─── */
+const obs=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting){e.target.c
