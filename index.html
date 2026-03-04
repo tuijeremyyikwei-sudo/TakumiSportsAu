@@ -6,7 +6,7 @@
 <title>Takumi Sports — Premium Pickleball Paddles Australia</title>
 <meta name="description" content="Official Osaka World retailer in Australia. Premium pickleball paddles, local shipping, Australian warranty."/>
 <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
-<script>(function(){emailjs.init({publicKey:"YOUR_PUBLIC_KEY"});})()</script>
+<script>(function(){emailjs.init({publicKey:"n_MWdmW_z4chNdnqp"});})()</script>
 <link rel="preconnect" href="https://fonts.googleapis.com"/>
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
 <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet"/>
@@ -421,8 +421,8 @@ footer{background:var(--bg2);padding:52px 0 26px;border-top:1px solid var(--bord
           <div class="pinfo-title">Bank Transfer Details</div>
           <div class="prow"><span class="prow-k">Account Name</span><span class="prow-v">Takumi Sports Australia</span></div>
           <div class="prow"><span class="prow-k">BSB</span><span class="prow-v" style="font-size:17px;letter-spacing:.08em">923-100</span></div>
-          <div class="prow"><span class="prow-k">Account Number</span><span class="prow-v" style="font-size:17px;letter-spacing:.08em">312 911 111</span></div>
-          <div class="prow"><span class="prow-k">Bank</span><span class="prow-v">Bendigo Bank</span></div>
+          <div class="prow"><span class="prow-k">Account Number</span><span class="prow-v" style="font-size:17px;letter-spacing:.08em">312 925 047</span></div>
+          <div class="prow"><span class="prow-k">Bank</span><span class="prow-v">ING Bank</span></div>
           <div class="prow"><span class="prow-k">PayID</span><span class="prow-v" style="font-size:13px">takumisport.aus@gmail.com</span></div>
         </div>
         <div class="pinstr">
@@ -430,7 +430,7 @@ footer{background:var(--bg2);padding:52px 0 26px;border-top:1px solid var(--bord
           1. Transfer the exact order total to the account above.<br/>
           2. Use your <strong>full name</strong> as the payment reference.<br/>
           3. Email receipt to <strong>takumisport.aus@gmail.com</strong><br/>
-          4. Orders dispatched within 1&ndash;2 business days after payment confirmed.
+          4. Orders dispatched within 1&ndash;7 business days after payment confirmed.
         </div>
         <div class="pnote">&#9200; Bank transfers take 1&ndash;2 business days to clear</div>
       </div>
@@ -837,8 +837,8 @@ function placeOrder(){
   const params={order_ref:ref,customer_name:fullName,customer_email:email,order_items:orderList,order_total:'$'+grand,shipping:ship===0?'FREE':'$9.95',pay_method:payMethod,order_date:now,store_email:'takumisport.aus@gmail.com'};
   // ── Replace YOUR_SERVICE_ID, TEMPLATE_OWNER, TEMPLATE_CUSTOMER with your EmailJS IDs ──
   Promise.all([
-    emailjs.send('YOUR_SERVICE_ID','TEMPLATE_OWNER',params),
-    emailjs.send('YOUR_SERVICE_ID','TEMPLATE_CUSTOMER',params),
+    emailjs.send('service_kn6v3zx','template_2n9bbpi',params),
+    emailjs.send('service_kn6v3zx','template_sdz6uhs',params),
   ])
   .then(()=>{showOrderSuccess(ref,payMethod);cart=[];refreshCart();showToast('\uD83C\uDF89 Order confirmed! Check your email.');})
   .catch(err=>{console.warn('EmailJS not configured:',err);showOrderSuccess(ref,payMethod);cart=[];refreshCart();showToast('\uD83C\uDF89 Order placed successfully!');})
@@ -857,7 +857,7 @@ function showOrderSuccess(ref,payMethod){
       Account: <strong style="color:var(--text)">Takumi Sports Australia</strong><br/>
       BSB: <strong style="color:var(--text)">923-100</strong><br/>
       Account No: <strong style="color:var(--text)">312 911 111</strong><br/>
-      Bank: <strong style="color:var(--text)">Bendigo Bank</strong><br/>
+      Bank: <strong style="color:var(--text)">ING Bank</strong><br/>
       Reference: <strong style="color:var(--accent)">${ref}</strong>
     </div>
     <p style="font-size:12px;color:var(--muted)">Email receipt to <strong style="color:var(--accent)">takumisport.aus@gmail.com</strong></p>
